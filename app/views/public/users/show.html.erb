@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class='col-md-12'>
+      <div class="row">
+       <div class="col-md-8 mx-auto mt-4">
+        <h1><strong>マイページ</strong></h1><br>
+
+          <div class="row">
+           <h3 class="col-8">登録情報</h3>
+           <div class="col-4">
+          　 <%= link_to edit_public_user_path(@user), class:"btn btn-outline-success" do %>
+          　 <i class="fa-solid fa-pen-to-square"></i>
+          　 <% end %>
+           </div>
+          </div>
+
+
+    <table class="table border">
+      <thead>
+
+        <tr>
+          <th><%= image_tag @user.get_profile_image(100,100),class: "rounded-circle" %></th>
+        </tr>
+
+        <tr>
+          <th class="border-right">ニックネーム</th>
+          <th><%= @user.name %></th>
+        </tr>
+
+        <tr>
+          <th class="border-right">紹介文</th>
+          <th><%= @user.introduction %></th>
+        </tr>
+
+        <tr>
+          <th class="border-right">メールアドレス</th>
+          <th><%= @user.email %></th>
+        </tr>
+
+      </thead>
+    </table>
+
+
+     </div>
+     </div>
+
+    </div>
+  </div>
+</div>
