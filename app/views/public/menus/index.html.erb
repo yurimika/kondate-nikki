@@ -1,0 +1,8 @@
+<% @menus.each do |menu| %>
+<div>
+  <%= link_to public_menu_path(menu.id) do %>
+    <%= image_tag menu.get_image, size: '320x240' %>
+  <% end %>
+  <p>投稿日：<%= menu.created_at.strftime('%Y/%m/%d') %></p>
+</div>
+<% end %>

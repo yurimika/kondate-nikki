@@ -1,0 +1,41 @@
+<h1>献立投稿フォーム</h1>
+
+  <%= form_with model: @menu, url: public_menus_path do |f| %>
+    <h4>献立画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+    <h4>一言コメント</h4>
+      <%= f.text_area :comment %>
+    <h4>メニュー1(必須)</h4>
+      <%= f.text_field :menu_name_1 %>
+    <h4>使用した食材1(必須)</h4>
+      <%= f.text_area :food_detail_1 %>
+    <h4>メニュー2</h4>
+      <%= f.text_field :menu_name_2 %>
+    <h4>使用した食材2</h4>
+      <%= f.text_area :food_detail_2 %>
+    <h4>メニュー3</h4>
+      <%= f.text_field :menu_name_3 %>
+    <h4>使用した食材3</h4>
+      <%= f.text_area :food_detail_3 %>
+    <h4>メニュー4</h4>
+      <%= f.text_field :menu_name_4 %>
+    <h4>使用した食材4</h4>
+      <%= f.text_area :food_detail_4 %>
+    <h4>メニュー5</h4>
+      <%= f.text_field :menu_name_5 %>
+    <h4>使用した食材5</h4>
+      <%= f.text_area :food_detail_5 %>
+    <h4>メニュー6</h4>
+      <%= f.text_field :menu_name_6 %>
+    <h4>使用した食材6</h4>
+      <%= f.text_area :food_detail_6 %>
+    <h4>メニュー7</h4>
+      <%= f.text_field :menu_name_7 %>
+    <h4>使用した食材7</h4>
+      <%= f.text_area :food_detail_7 %>
+    <h4>メニュー8</h4>
+      <%= f.text_field :menu_name_8 %>
+    <h4>使用した食材8</h4>
+      <%= f.text_area :food_detail_8 %>
+    <%= f.submit '投稿' %>
+  <% end %>

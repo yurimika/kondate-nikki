@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_09_145154) do
+ActiveRecord::Schema.define(version: 2022_07_11_134229) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,29 @@ ActiveRecord::Schema.define(version: 2022_07_09_145154) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "menu_name_1"
+    t.text "food_detail_1"
+    t.string "menu_name_2"
+    t.text "food_detail_2"
+    t.string "menu_name_3"
+    t.text "food_detail_3"
+    t.string "menu_name_4"
+    t.text "food_detail_4"
+    t.string "menu_name_5"
+    t.text "food_detail_5"
+    t.string "menu_name_6"
+    t.text "food_detail_6"
+    t.string "menu_name_7"
+    t.text "food_detail_7"
+    t.string "menu_name_8"
+    t.text "food_detail_8"
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

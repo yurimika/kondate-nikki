@@ -24,6 +24,12 @@
        <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
          <li>
+           <%= link_to "投稿する", new_public_menu_path, class: "btn btn-outline-dark mr-3" %>
+         </li>
+         <li>
+           <%= link_to "日記", public_menus_path, class: "btn btn-outline-dark mr-3" %>
+         </li>
+         <li>
            <%= link_to "マイページ", public_user_path(current_user), class: "btn btn-outline-dark mr-3" %>
          </li>
          <li>

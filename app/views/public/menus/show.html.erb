@@ -1,0 +1,63 @@
+<div>
+  <%= image_tag @menu.get_image, size: '640x480' %>
+  <p>一言コメント：<%= @menu.comment %></p>
+  <p>メニュー1：<%= @menu.menu_name_1 %></p>
+  <p>使用した食材1：<%= @menu.food_detail_1 %></p>
+
+  <!--メニュー２、食材２～メニュー８、食材８のカラムに値が入っていれば表示-->
+  <% if  @menu.menu_name_2.present? %>
+   <p>メニュー2：<%= @menu.menu_name_2 %></p>
+  <% end %>
+  <% if  @menu.food_detail_2.present? %>
+   <P>使用した食材2：<%= @menu.food_detail_2 %></p>
+  <% end %>
+
+  <% if  @menu.menu_name_3.present? %>
+   <p>メニュー3：<%= @menu.menu_name_3 %></p>
+  <% end %>
+  <% if  @menu.food_detail_3.present? %>
+   <P>使用した食材3：<%= @menu.food_detail_3 %></p>
+  <% end %>
+
+  <% if  @menu.menu_name_4.present? %>
+   <p>メニュー4：<%= @menu.menu_name_4 %></p>
+  <% end %>
+  <% if  @menu.food_detail_4.present? %>
+   <P>使用した食材4：<%= @menu.food_detail_4 %></p>
+  <% end %>
+
+  <% if  @menu.menu_name_5.present? %>
+   <p>メニュー5：<%= @menu.menu_name_5 %></p>
+  <% end %>
+  <% if  @menu.food_detail_5.present? %>
+   <P>使用した食材5：<%= @menu.food_detail_5 %></p>
+  <% end %>
+
+  <% if  @menu.menu_name_6.present? %>
+   <p>メニュー6：<%= @menu.menu_name_6 %></p>
+  <% end %>
+  <% if  @menu.food_detail_6.present? %>
+   <P>使用した食材6：<%= @menu.food_detail_6 %></p>
+  <% end %>
+
+  <% if  @menu.menu_name_7.present? %>
+   <p>メニュー7：<%= @menu.menu_name_7 %></p>
+  <% end %>
+  <% if  @menu.food_detail_7.present? %>
+   <P>使用した食材7：<%= @menu.food_detail_7 %></p>
+  <% end %>
+
+  <% if  @menu.menu_name_8.present? %>
+   <p>メニュー8：<%= @menu.menu_name_8 %></p>
+  <% end %>
+  <% if  @menu.food_detail_8.present? %>
+   <P>使用した食材8：<%= @menu.food_detail_8 %></p>
+  <% end %>
+
+  <p>投稿日：<%= @menu.created_at.strftime('%Y/%m/%d') %></p>
+</div>
+
+  <% if @menu.user == current_user %>
+    <%= link_to "編集",  edit_public_menu_path(@menu) %>
+    <%= link_to "削除",  public_menu_path(@menu), method: :delete %>
+  <% end %>
