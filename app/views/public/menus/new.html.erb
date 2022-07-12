@@ -5,6 +5,8 @@
       <%= f.file_field :image, accept: "image/*" %>
     <h4>一言コメント</h4>
       <%= f.text_area :comment %>
+    <h4>日付</h4>
+      <%= f.datetime_select :start_time %>
     <h4>メニュー1(必須)</h4>
       <%= f.text_field :menu_name_1 %>
     <h4>使用した食材1(必須)</h4>

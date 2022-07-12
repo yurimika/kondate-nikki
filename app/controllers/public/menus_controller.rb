@@ -42,6 +42,6 @@ class Public::MenusController < ApplicationController
 
   def menu_params
     params.require(:menu).permit(:comment, :image, :menu_name_1, :food_detail_1, :menu_name_2, :food_detail_2, :menu_name_3, :food_detail_3, :menu_name_4, :food_detail_4,
-     :menu_name_5, :food_detail_5, :menu_name_6, :food_detail_6, :menu_name_7, :food_detail_7, :menu_name_8, :food_detail_8,)
+     :menu_name_5, :food_detail_5, :menu_name_6, :food_detail_6, :menu_name_7, :food_detail_7, :menu_name_8, :food_detail_8, :start_time)
   end
 end

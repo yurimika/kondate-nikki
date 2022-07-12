@@ -1,8 +1,14 @@
-<% @menus.each do |menu| %>
-<div>
-  <%= link_to public_menu_path(menu.id) do %>
-    <%= image_tag menu.get_image, size: '320x240' %>
+<h2 class="text-center mt-4"><strong><%= current_user.name %>の献立日記</strong></h2>
+<div class= 'calender'>
+  <%= month_calendar events: @menus do |date, menus| %>
+  　<%= date.day %>
+
+  　 <% menus.each do |menu| %>
+      <div>
+       <%= link_to public_menu_path(menu.id) do %>
+         <%= image_tag menu.get_image, size: '80x60' %>
+       <% end %>
+      </div>
+    <% end %>
   <% end %>
-  <p>投稿日：<%= menu.created_at.strftime('%Y/%m/%d') %></p>
 </div>
-<% end %>

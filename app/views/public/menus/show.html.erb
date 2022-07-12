@@ -1,3 +1,4 @@
+<h2>投稿詳細</h2>
 <div>
   <%= image_tag @menu.get_image, size: '640x480' %>
   <p>一言コメント：<%= @menu.comment %></p>
@@ -54,7 +55,7 @@
    <P>使用した食材8：<%= @menu.food_detail_8 %></p>
   <% end %>
 
-  <p>投稿日：<%= @menu.created_at.strftime('%Y/%m/%d') %></p>
+  <p>作成日：<%= @menu.start_time.strftime('%Y/%m/%d') %></p>
 </div>
 
   <% if @menu.user == current_user %>
