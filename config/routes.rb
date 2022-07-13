@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root 'public/homes#top'
   namespace :public do
+    get "search" => "searches#search"
     resources :users, only:[:show, :edit, :update]
     resources :menus
   end

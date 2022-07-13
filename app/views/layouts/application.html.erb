@@ -20,6 +20,7 @@
         <span class="navbar-toggler-icon"></span>
         </button>
 
+       <!--ロゴ-->
        <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <div class="float-left header-logo mt-3">
             <%= link_to root_path do %>
@@ -27,6 +28,7 @@
             <% end %>
         </div>
 
+       <!--ヘッダーナビ-->
        <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
          <li>
@@ -59,6 +61,14 @@
       </div>
       </div>
     </nav>
+
+  <!--検索-->
+  <div class="search_form text-center">
+    <%= form_with url: public_search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word %>
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
    <main>
     <%= yield %>
