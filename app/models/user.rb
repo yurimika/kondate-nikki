@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
   has_many :menus, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_menus, through: :likes, source: :menu
 
   def get_profile_image(width, height)
    unless profile_image.attached?
@@ -14,6 +16,10 @@ class User < ApplicationRecord
     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
    end
   profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def liked_by?(menu_id)
+    likes.where(menu_id: menu_id).exists?
   end
 
 

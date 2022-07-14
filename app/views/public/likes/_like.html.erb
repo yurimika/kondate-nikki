@@ -1,0 +1,12 @@
+<% if current_user.liked_by?(menu.id) %>
+    <%= link_to public_menu_like_path(menu, menu.likes), class: "like-link text-danger", method: :delete, remote: true do %>
+     <i class="fa fa-heart unlike-btn"></i>
+     <%= menu.likes.length %>
+    <% end %>
+<% else %>
+    <%= link_to public_menu_likes_path(menu), class: "like-link", method: :post, remote: true do %>
+     <i class="fa fa-heart like-btn"></i>
+     <%= menu.likes.length %>
+    <% end %>
+<% end %>
+

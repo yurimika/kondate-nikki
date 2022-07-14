@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_12_134100) do
+ActiveRecord::Schema.define(version: 2022_07_14_023732) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,24 @@ ActiveRecord::Schema.define(version: 2022_07_12_134100) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "menu_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["menu_id"], name: "index_likes_on_menu_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "menu_tags", force: :cascade do |t|
+    t.integer "menu_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["menu_id"], name: "index_menu_tags_on_menu_id"
+    t.index ["tag_id"], name: "index_menu_tags_on_tag_id"
+  end
+
   create_table "menus", force: :cascade do |t|
     t.integer "user_id"
     t.string "menu_name_1"
@@ -76,6 +94,12 @@ ActiveRecord::Schema.define(version: 2022_07_12_134100) do
     t.datetime "start_time"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -92,4 +116,8 @@ ActiveRecord::Schema.define(version: 2022_07_12_134100) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "likes", "menus"
+  add_foreign_key "likes", "users"
+  add_foreign_key "menu_tags", "menus"
+  add_foreign_key "menu_tags", "tags"
 end

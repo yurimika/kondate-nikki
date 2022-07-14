@@ -1,0 +1,43 @@
+ <div>
+        <% menus.each do |menu| %>
+          <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle" %>
+          <p><%= menu.user.name %></p>
+
+          <%= link_to public_menu_path(menu) do %>
+           <%= image_tag menu.get_image, size: '320x240' %>
+          <% end%>
+
+          <% if  menu.menu_name_1.present? %>
+           <p>主食：<%= menu.menu_name_1 %></p>
+          <% end %>
+
+          <% if  menu.menu_name_2.present? %>
+           <p>汁物：<%= menu.menu_name_2 %></p>
+          <% end %>
+
+          <% if  menu.menu_name_3.present? %>
+           <p>主菜：<%= menu.menu_name_3 %></p>
+          <% end %>
+
+          <% if  menu.menu_name_4.present? %>
+           <p>主菜2：<%= menu.menu_name_4 %></p>
+          <% end %>
+
+          <% if  menu.menu_name_5.present? %>
+           <p>副菜：<%= menu.menu_name_5 %></p>
+          <% end %>
+
+          <% if  menu.menu_name_6.present? %>
+           <p>副菜2：<%= menu.menu_name_6 %></p>
+          <% end %>
+
+          <% if  menu.menu_name_7.present? %>
+           <p>副菜3：<%= menu.menu_name_7 %></p>
+          <% end %>
+
+          <% if  menu.menu_name_8.present? %>
+           <p>その他：<%= menu.menu_name_8 %></p>
+          <% end %>
+        <% end %>
+
+ </div>
