@@ -1,9 +1,27 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
-  devise_for :users
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  }
+
+  devise_for :users, controllers: {
+  sessions:      'users/sessions',
+  passwords:     'users/passwords',
+  registrations: 'users/registrations'
+}
 
   root 'public/homes#top'
+
+  namespace :admin do
+    get "/"=>"homes#top"
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :menus, only: [:index, :show, :destroy] do
+       resources :comments, only: [:destroy]
+    end
+  end
+
+
   namespace :public do
     get "search" => "searches#search"
     resources :users do
@@ -13,6 +31,7 @@ Rails.application.routes.draw do
     end
     resources :menus do
        resources :likes, only: [:create, :destroy]
+       resources :comments, only: [:create, :destroy]
     end
   end
 

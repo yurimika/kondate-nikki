@@ -16,3 +16,8 @@ Tag.create([
     { name: '卵料理'},
     { name: '麺類'},
     ])
+
+Admin.create!(
+   email: 'kondatenikki@gmail.com',
+   password: 'kondatenikkiadmin'
+)

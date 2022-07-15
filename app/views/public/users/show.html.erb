@@ -8,8 +8,10 @@
           <div class="row">
            <h3 class="col-8">登録情報</h3>
            <div class="col-4">
-          　 <%= link_to edit_public_user_path(@user), class:"btn btn-outline-success" do %>
-          　 <i class="fa-solid fa-pen-to-square"></i>
+             <% if @user == current_user %>
+            　 <%= link_to edit_public_user_path(@user), class:"btn btn-outline-success" do %>
+            　 <i class="fa-solid fa-pen-to-square"></i>
+            　 <% end %>
           　 <% end %>
            </div>
           </div>
@@ -32,17 +34,19 @@
           <th><%= @user.introduction %></th>
         </tr>
 
+      <% if @user == current_user %>
         <tr>
           <th class="border-right">メールアドレス</th>
           <th><%= @user.email %></th>
         </tr>
+      <% end %>
 
       </thead>
     </table>
-
-<%= link_to "献立を投稿する", new_public_menu_path %>
-<%= link_to "いいねした投稿", likes_public_user_path(@user) %>
-
+ <% if @user == current_user %>
+  <%= link_to "献立を投稿する", new_public_menu_path %>
+  <%= link_to "いいねした投稿", likes_public_user_path(@user) %>
+ <% end %>
      </div>
      </div>
 

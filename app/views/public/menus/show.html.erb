@@ -80,3 +80,15 @@
     <%= link_to "編集",  edit_public_menu_path(@menu) %>
     <%= link_to "削除",  public_menu_path(@menu), method: :delete %>
   <% end %>
+
+<!--コメント機能-->
+       <table>
+         <tbody id="comment-index" >
+          <%= render "public/comments/comment", menu: @menu %>
+         </tbody>
+       </table>
+
+        <%= form_with model: [@menu, @comment], url: public_menu_comments_path(@menu), local: false  do |f| %>
+          <%= f.text_area :comment, rows: '5' %>
+          <%= f.submit "送信" %>
+        <% end %>

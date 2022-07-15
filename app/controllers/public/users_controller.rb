@@ -1,8 +1,8 @@
 class Public::UsersController < ApplicationController
   before_action :set_user, only: [:likes]
-  
+
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -17,7 +17,7 @@ class Public::UsersController < ApplicationController
        render :edit
      end
   end
-  
+
   def likes
     likes = Like.where(user_id: @user.id).pluck(:menu_id)
     @like_menus = Menu.find(likes)
@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
-  
+
   def set_user
     @user = User.find(params[:id])
   end

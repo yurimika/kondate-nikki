@@ -12,7 +12,8 @@ class Public::MenusController < ApplicationController
   end
 
   def index
-    @menus = Menu.all
+    @user = current_user
+    @menus = @user.menus
   end
 
   def edit
@@ -30,6 +31,8 @@ class Public::MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
+    @comment = Comment.new
+    @comments = @menu.comments
   end
 
   def destroy

@@ -1,0 +1,21 @@
+ <% menu.comments.each do |comment| %>
+  <tr>
+    <td>
+       <%= link_to public_user_path(comment.user) do %>
+        <%= image_tag comment.user.get_profile_image(50,50), class:"rounded-circle" %>
+       <% end %>
+        <%= comment.user.name %>
+    </td>
+    <td>
+     <%= comment.comment %>
+    </td>
+    <td>
+      <% if comment.user == current_user %>
+       <%= link_to "削除",  public_menu_comment_path(comment.menu, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+      <% elsif admin_signed_in? %>
+       <%= link_to "コメント削除", admin_menu_comment_path(comment.menu, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+      <% end %>
+    </td>
+
+  </tr>
+<% end %>

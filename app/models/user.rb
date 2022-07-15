@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :menus, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_menus, through: :likes, source: :menu
+  has_many :comments, dependent: :destroy
 
   def get_profile_image(width, height)
    unless profile_image.attached?
@@ -21,6 +22,5 @@ class User < ApplicationRecord
   def liked_by?(menu_id)
     likes.where(menu_id: menu_id).exists?
   end
-
 
 end
