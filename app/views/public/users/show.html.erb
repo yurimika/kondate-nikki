@@ -8,7 +8,7 @@
           <div class="row">
            <h3 class="col-8">登録情報</h3>
            <div class="col-4">
-             <% if @user == current_user %>
+             <% if (@user == current_user) && (@user.name != "guestuser") %>
             　 <%= link_to edit_public_user_path(@user), class:"btn btn-outline-success" do %>
             　 <i class="fa-solid fa-pen-to-square"></i>
             　 <% end %>
@@ -34,7 +34,7 @@
           <th><%= @user.introduction %></th>
         </tr>
 
-      <% if @user == current_user %>
+      <% if (@user == current_user) && (@user.name != "guestuser") %>
         <tr>
           <th class="border-right">メールアドレス</th>
           <th><%= @user.email %></th>

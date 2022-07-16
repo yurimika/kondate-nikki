@@ -6,18 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Tag.create([
-    { name: '洋食' },
-    { name: '和食' },
-    { name: '中華'},
-    { name: '肉料理' },
-    { name: '魚料理' },
-    { name: '野菜料理'},
-    { name: '卵料理'},
-    { name: '麺類'},
-    ])
+Admin.find_or_create_by(email: "kondatenikki@gmail.com") do |admin|
+    admin.password = "kondatenikkiadmin"
+   end
 
-Admin.create!(
-   email: 'kondatenikki@gmail.com',
-   password: 'kondatenikkiadmin'
-)
+Tag.find_or_create_by(name: "洋食")
+Tag.find_or_create_by(name: "和食")
+Tag.find_or_create_by(name: "中華")
+Tag.find_or_create_by(name: "肉料理")
+Tag.find_or_create_by(name: "魚料理")
+Tag.find_or_create_by(name: "野菜料理")
+Tag.find_or_create_by(name: "卵料理")
+Tag.find_or_create_by(name: "麵類")

@@ -1,3 +1,64 @@
+<dev class="container">
 <p>毎日の食卓にアイデアを</p>
+<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
 <%= link_to "ログイン", new_user_session_path %>
 <%= link_to "新規登録", new_user_registration_path %>
+
+
+<p>週間ランキング</p>
+<div class="rank-container">
+  <% @ranks.each.with_index(1) do |menu, i| %>
+  <div class="rank-box">
+    <%= i %>位
+    <div>
+      <%= link_to public_user_path(menu.user) do %>
+           <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle" %>
+          <% end %>
+
+          <%= menu.user.name %>
+
+          <div>
+           <!--管理者とそれ以外で飛べる詳細を分ける-->
+           <% if !admin_signed_in? %>
+             <%= link_to public_menu_path(menu) do %>
+              <%= image_tag menu.get_image, size: '320x240' %>
+             <% end %>
+           <% else %>
+             <%= link_to admin_menu_path(menu) do %>
+              <%= image_tag menu.get_image, size: '320x240' %>
+             <% end %>
+           <% end %>
+          </div>
+           <p>一言コメント：<%= menu.comment %></p>
+
+     </div>
+   </div>
+  <% end %>
+</div>
+
+
+<p>新着</p>
+   <% @menus.each do |menu| %>
+        　<%= link_to public_user_path(menu.user) do %>
+           <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle" %>
+          <% end %>
+
+          <%= menu.user.name %>
+
+          <div>
+           <!--管理者とそれ以外で飛べる詳細を分ける-->
+           <% if !admin_signed_in? %>
+             <%= link_to public_menu_path(menu) do %>
+              <%= image_tag menu.get_image, size: '320x240' %>
+             <% end %>
+           <% else %>
+             <%= link_to admin_menu_path(menu) do %>
+              <%= image_tag menu.get_image, size: '320x240' %>
+             <% end %>
+           <% end %>
+          </div>
+           <p>一言コメント：<%= menu.comment %></p>
+     <% end %>
+</div>
+
+

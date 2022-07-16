@@ -1,6 +1,5 @@
- <div>
-        <% menus.each do |menu| %>
 
+        <% menus.each do |menu| %>
         　<%= link_to public_user_path(menu.user) do %>
            <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle" %>
           <% end %>
@@ -51,6 +50,4 @@
           <% if  menu.menu_name_8.present? %>
            <p>その他：<%= menu.menu_name_8 %></p>
           <% end %>
-        <% end %>
-
- </div>
+    <% end %>
