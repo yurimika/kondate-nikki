@@ -1,6 +1,5 @@
 class Public::UsersController < ApplicationController
   before_action :set_user, only: [:likes]
-  before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
 
   def show

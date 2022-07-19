@@ -41,6 +41,11 @@ class Public::MenusController < ApplicationController
     redirect_to public_menus_path
   end
 
+  def new_arrival
+    @menus = Menu.all
+    @menus = Menu.all.order(created_at: :desc)
+  end
+
   private
 
   def menu_params

@@ -88,7 +88,12 @@
          </tbody>
        </table>
 
+     <div>
+      <% if user_signed_in? %>
+        <%= image_tag current_user.get_profile_image(50,50), class:"rounded-circle" %>
         <%= form_with model: [@menu, @comment], url: public_menu_comments_path(@menu), local: false  do |f| %>
           <%= f.text_area :comment, rows: '5' %>
           <%= f.submit "送信" %>
         <% end %>
+      <% end %>
+     </div>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/"=>"homes#top"
+    get "user_search" => "searches#user_search"
     resources :users, only: [:index, :show, :edit, :update]
     resources :menus, only: [:index, :show, :destroy] do
        resources :comments, only: [:destroy]
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
        get :likes
       end
     end
+    get "new_arrival" => "menus#new_arrival"
     resources :menus do
        resources :likes, only: [:create, :destroy]
        resources :comments, only: [:create, :destroy]

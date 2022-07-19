@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :liked_menus, through: :likes, source: :menu
   has_many :comments, dependent: :destroy
 
-
+#ゲストログイン
   def self.guest
       find_or_create_by!(name: 'guestuser' ,email: 'guestusers@gmail.com') do |user|
        user.password = SecureRandom.urlsafe_base64
@@ -19,7 +19,7 @@ class User < ApplicationRecord
       end
   end
 
-
+#画像
   def get_profile_image(width, height)
    unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -28,8 +28,14 @@ class User < ApplicationRecord
   profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+#いいね
   def liked_by?(menu_id)
     likes.where(menu_id: menu_id).exists?
+  end
+
+#user検索
+  def self.looks(word)
+      @user = User.where("name LIKE?","#{word}")
   end
 
 end
