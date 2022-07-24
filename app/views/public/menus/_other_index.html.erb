@@ -1,0 +1,21 @@
+<% menus.each do |menu| %>
+        　<%= link_to public_user_path(menu.user) do %>
+           <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle" %>
+          <% end %>
+
+          <%= menu.user.name %>
+
+          <div>
+           <!--管理者とそれ以外で飛べる詳細を分ける-->
+           <% if !admin_signed_in? %>
+             <%= link_to public_menu_path(menu) do %>
+              <%= image_tag menu.get_image, size: '320x240' %>
+             <% end %>
+           <% else %>
+             <%= link_to admin_menu_path(menu) do %>
+              <%= image_tag menu.get_image, size: '320x240' %>
+             <% end %>
+           <% end %>
+          </div>
+           <p>一言コメント：<%= menu.comment %></p>
+     <% end %>

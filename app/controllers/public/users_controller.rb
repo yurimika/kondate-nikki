@@ -1,9 +1,11 @@
 class Public::UsersController < ApplicationController
   before_action :set_user, only: [:likes]
+  before_action :authenticate_user!, except: [:show]
   before_action :ensure_guest_user, only: [:edit]
 
   def show
     @user = User.find(params[:id])
+    @menus = @user.menus.limit(3)
   end
 
   def edit

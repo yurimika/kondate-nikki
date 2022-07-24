@@ -1,3 +1,6 @@
+<p class="text-success ml-5"><%= flash[:notice] %></p>
+<p class="text-danger ml-5"><%= flash[:alert] %></p>
+
 <h2 class="text-center mt-4"><strong><%= current_user.name %>の献立日記</strong></h2>
 <div class= 'calender'>
   <%= month_calendar events: @menus do |date, menus| %>

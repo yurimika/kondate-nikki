@@ -7,26 +7,27 @@
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+　  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   </head>
-
 
 
 
   <body>
     <header>
-    <nav class="navbar navbar-expand-sm navbar-light" >
+    <nav class="navbar navbar-expand-sm navbar-light color" >
       <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
 
-       <!--ロゴ-->
+           <!--ロゴ-->
        <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <div class="float-left header-logo mt-3">
             <%= link_to root_path do %>
             <p>こんだて日記</p>
             <% end %>
         </div>
+
 
        <!--ヘッダーナビ-->
        <ul class="navbar-nav ml-auto">
@@ -71,26 +72,36 @@
     </nav>
 
 <!--管理者側では表示しない-->
+
 <% if !admin_signed_in? %>
-  <!--検索-->
-  <div class="search_form text-center">
-    <%= form_with url: public_search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-  <div>
-  <%= form_tag  public_search_path, method: :get, class: 'boards__searchForm text-center' do %>
-      <%= select_tag :tag_id,
-                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                     {
-                       prompt: 'タグで絞り込み検索',
-                       onchange: 'submit(this.form);'
-                     }
-      %>
-    <% end %>
-  </div>
-<% end %>
+        <div class="container mt-3">
+          <div class="row">
+          <!--タグ-->
+          <div class="col-8">
+          <%= form_tag  public_search_path, method: :get, class: 'boards__searchForm text-center' do %>
+              <%= select_tag :tag_id,
+                             options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                             {
+                               prompt: 'タグで絞り込み検索',
+                               onchange: 'submit(this.form);'
+                             }
+              %>
+            <% end %>
+          </div>
+
+          <div class="col-4">
+              <!--検索-->
+              <div class="search_form text-right mr-5">
+                <%= form_with url: public_search_path, local: true, method: :get do |f| %>
+                  <%= f.text_field :word, placeholder: "メニュー名、食材" %>
+                  <%= f.submit "検索", class: "btn btn-primary" %>
+                <% end %>
+              </div>
+          </div>
+         </div>
+       </div>
+ <% end %>
+
 
    <main>
     <%= yield %>

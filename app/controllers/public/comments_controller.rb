@@ -1,9 +1,14 @@
 class Public::CommentsController < ApplicationController
   def create
-    @menu = Menu.find(params[:menu_id])
-    comment = current_user.comments.new(comment_params)
-    comment.menu_id = @menu.id
-    comment.save
+     @menu = Menu.find(params[:menu_id])
+     @comment = current_user.comments.new(comment_params)
+     @comment.menu_id = @menu.id
+     @comment.save
+    if @comment.save
+      render :create #jsファイル
+    else
+      render :error
+    end
   end
 
   def destroy

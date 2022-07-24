@@ -7,6 +7,9 @@ class Menu < ApplicationRecord
    has_many :liked_users, through: :likes, source: :user
    has_many :comments, dependent: :destroy
 
+   validates :comment, presence: true, length: { maximum: 75 }
+   validates :start_time, presence: true
+
   #画像表示
   def get_image
    unless image.attached?

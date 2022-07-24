@@ -15,7 +15,7 @@ class Users::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to public_user_path(current_user), notice: 'guestuserでログインしました。'
+    redirect_to public_user_path(current_user), notice: "guestuserでログインしました。"
   end
 
 # 退会しているかを判断
@@ -25,7 +25,7 @@ class Users::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email].downcase)
     if @user
       if (@user.valid_password?(params[:user][:password]) && (@user.is_deleted) == true)
-        flash[:notice] = "利用停止中です。"
+        flash[:alert] = "利用停止中です。"
         redirect_to new_user_session_path
       end
     else

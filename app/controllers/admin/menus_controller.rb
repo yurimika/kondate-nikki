@@ -11,6 +11,7 @@ class Admin::MenusController < ApplicationController
   def destroy
     @menu = Menu.find(params[:id])
     @menu.destroy
+    flash[:alert] = "投稿を削除しました。"
     redirect_to admin_menus_path
   end
 end

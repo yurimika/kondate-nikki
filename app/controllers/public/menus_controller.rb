@@ -7,8 +7,12 @@ class Public::MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     @menu.user_id = current_user.id
-    @menu.save
-    redirect_to  public_menus_path
+    if @menu.save
+       flash[:notice] = "投稿しました。"
+       redirect_to  public_menus_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -23,6 +27,7 @@ class Public::MenusController < ApplicationController
   def update
     @menu = Menu.find(params[:id])
      if @menu.update(menu_params)
+       flash[:notice] = "更新しました。"
        redirect_to public_menu_path
      else
        render :edit
@@ -38,6 +43,7 @@ class Public::MenusController < ApplicationController
   def destroy
     @menu = Menu.find(params[:id])
     @menu.destroy
+    flash[:alert] = "投稿を削除しました。"
     redirect_to public_menus_path
   end
 

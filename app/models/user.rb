@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :liked_menus, through: :likes, source: :menu
   has_many :comments, dependent: :destroy
 
+  validates :name, presence: true
+  validates :email, presence: true
+
 #ゲストログイン
   def self.guest
       find_or_create_by!(name: 'guestuser' ,email: 'guestusers@gmail.com') do |user|

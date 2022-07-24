@@ -1,99 +1,122 @@
-<h2>投稿詳細</h2>
-<div>
-  <%= image_tag @menu.get_image, size: '640x480' %>
-
-  <!--いいね-->
-  <div id = "like_<%= @menu.id %>">
-    <%= render "public/likes/like", menu: @menu %>
+<div class="container">
+  <div class="row">
+  <div class="col-md-8">
+ <p class="text-success"><%= flash[:notice] %></p>
+    <h2>投稿詳細</h2>
   </div>
 
-  <!--タグ-->
-  <div>
-   <% @menu.tags.each do |tag| %>
-     <%= tag.name %>
-   <% end %>
+  <div class="col-md-4">
+     <% if @menu.user == current_user %>
+       <%= link_to "編集",  edit_public_menu_path(@menu) %>
+       <%= link_to "削除",  public_menu_path(@menu), method: :delete %>
+     <% end %>
+  </div>
   </div>
 
-  <p>一言コメント：<%= @menu.comment %></p>
 
-  <!--カラムに値が入っていれば表示-->
-  <% if  @menu.menu_name_1.present? %>
-   <p>主食：<%= @menu.menu_name_1 %></p>
-  <% end %>
-  <% if  @menu.food_detail_1.present? %>
-   <P>使用した食材(主食)：<%= @menu.food_detail_1 %></p>
-  <% end %>
+ <div class="row">
+  <div class="col-md-6">
 
-  <% if  @menu.menu_name_2.present? %>
-   <p>汁物：<%= @menu.menu_name_2 %></p>
-  <% end %>
-  <% if  @menu.food_detail_2.present? %>
-   <P>使用した食材(汁物)：<%= @menu.food_detail_2 %></p>
-  <% end %>
+      <%= image_tag @menu.get_image, size: '480x360' %>
 
-  <% if  @menu.menu_name_3.present? %>
-   <p>主菜：<%= @menu.menu_name_3 %></p>
-  <% end %>
-  <% if  @menu.food_detail_3.present? %>
-   <P>使用した食材(主菜)：<%= @menu.food_detail_3 %></p>
-  <% end %>
+      <!--いいね-->
+      <div id = "like_<%= @menu.id %>">
+        <%= render "public/likes/like", menu: @menu %>
+      </div>
 
-  <% if  @menu.menu_name_4.present? %>
-   <p>主菜2：<%= @menu.menu_name_4 %></p>
-  <% end %>
-  <% if  @menu.food_detail_4.present? %>
-   <P>使用した食材(主菜2)：<%= @menu.food_detail_4 %></p>
-  <% end %>
+      <!--タグ-->
+      <div>
+       <% @menu.tags.each do |tag| %>
+         <%= tag.name %>
+       <% end %>
+      </div>
+  </div>
 
-  <% if  @menu.menu_name_5.present? %>
-   <p>副菜：<%= @menu.menu_name_5 %></p>
-  <% end %>
-  <% if  @menu.food_detail_5.present? %>
-   <P>使用した食材(副菜)：<%= @menu.food_detail_5 %></p>
-  <% end %>
+  <div class="col-md-6">
+     <p>一言コメント：<%= @menu.comment %></p>
 
-  <% if  @menu.menu_name_6.present? %>
-   <p>副菜2：<%= @menu.menu_name_6 %></p>
-  <% end %>
-  <% if  @menu.food_detail_6.present? %>
-   <P>使用した食材(副菜2)：<%= @menu.food_detail_6 %></p>
-  <% end %>
+     <!--カラムに値が入っていれば表示-->
+     <% if  @menu.menu_name_1.present? %>
+      <p>主食：<%= @menu.menu_name_1 %></p>
+     <% end %>
+     <% if  @menu.food_detail_1.present? %>
+      <p>使用した食材(主食)：<%= @menu.food_detail_1 %></p>
+     <% end %>
 
-  <% if  @menu.menu_name_7.present? %>
-   <p>副菜3：<%= @menu.menu_name_7 %></p>
-  <% end %>
-  <% if  @menu.food_detail_7.present? %>
-   <P>使用した食材(副菜3)：<%= @menu.food_detail_7 %></p>
-  <% end %>
+     <% if  @menu.menu_name_2.present? %>
+      <p>汁物：<%= @menu.menu_name_2 %></p>
+     <% end %>
+     <% if  @menu.food_detail_2.present? %>
+      <p>使用した食材(汁物)：<%= @menu.food_detail_2 %></p>
+     <% end %>
 
-  <% if  @menu.menu_name_8.present? %>
-   <p>その他：<%= @menu.menu_name_8 %></p>
-  <% end %>
-  <% if  @menu.food_detail_8.present? %>
-   <P>使用した食材(その他)：<%= @menu.food_detail_8 %></p>
-  <% end %>
+     <% if  @menu.menu_name_3.present? %>
+      <p>主菜：<%= @menu.menu_name_3 %></p>
+     <% end %>
+     <% if  @menu.food_detail_3.present? %>
+      <p>使用した食材(主菜)：<%= @menu.food_detail_3 %></p>
+     <% end %>
 
-  <p>作成日：<%= @menu.start_time.strftime('%Y/%m/%d') %></p>
-</div>
+     <% if  @menu.menu_name_4.present? %>
+      <p>主菜2：<%= @menu.menu_name_4 %></p>
+     <% end %>
+     <% if  @menu.food_detail_4.present? %>
+      <p>使用した食材(主菜2)：<%= @menu.food_detail_4 %></p>
+     <% end %>
 
-  <% if @menu.user == current_user %>
-    <%= link_to "編集",  edit_public_menu_path(@menu) %>
-    <%= link_to "削除",  public_menu_path(@menu), method: :delete %>
-  <% end %>
+     <% if  @menu.menu_name_5.present? %>
+      <p>副菜：<%= @menu.menu_name_5 %></p>
+     <% end %>
+     <% if  @menu.food_detail_5.present? %>
+      <p>使用した食材(副菜)：<%= @menu.food_detail_5 %></p>
+     <% end %>
 
-<!--コメント機能-->
-       <table>
-         <tbody id="comment-index" >
-          <%= render "public/comments/comment", menu: @menu %>
-         </tbody>
-       </table>
+     <% if  @menu.menu_name_6.present? %>
+      <p>副菜2：<%= @menu.menu_name_6 %></p>
+     <% end %>
+     <% if  @menu.food_detail_6.present? %>
+      <p>使用した食材(副菜2)：<%= @menu.food_detail_6 %></p>
+     <% end %>
 
-     <div>
-      <% if user_signed_in? %>
-        <%= image_tag current_user.get_profile_image(50,50), class:"rounded-circle" %>
-        <%= form_with model: [@menu, @comment], url: public_menu_comments_path(@menu), local: false  do |f| %>
-          <%= f.text_area :comment, rows: '5' %>
-          <%= f.submit "送信" %>
-        <% end %>
-      <% end %>
+     <% if  @menu.menu_name_7.present? %>
+      <p>副菜3：<%= @menu.menu_name_7 %></p>
+     <% end %>
+     <% if  @menu.food_detail_7.present? %>
+      <p>使用した食材(副菜3)：<%= @menu.food_detail_7 %></p>
+     <% end %>
+
+     <% if  @menu.menu_name_8.present? %>
+      <p>その他：<%= @menu.menu_name_8 %></p>
+     <% end %>
+     <% if  @menu.food_detail_8.present? %>
+      <p>使用した食材(その他)：<%= @menu.food_detail_8 %></p>
+     <% end %>
+
+     <p>作成日：<%= @menu.start_time.strftime('%Y/%m/%d') %></p>
+
+
+   <!--コメント機能-->
+          <table>
+            <tbody id="comment-index" >
+             <%= render "public/comments/comment", menu: @menu %>
+            </tbody>
+          </table>
+
+   　　<!--コメント、エラーメッセージ-->
+          <div id="comments-error">
+              <%= render 'layouts/error_messages', model: @comment %>
+          </div>
+
+        <div>
+         <% if user_signed_in? %>
+           <%= image_tag current_user.get_profile_image(50,50), class:"rounded-circle" %>
+           <%= form_with model: [@menu, @comment], url: public_menu_comments_path(@menu), local: false  do |f| %>
+          　　 <%= f.text_area :comment, rows: '5',placeholder: "コメントをここに" %>
+             <%= f.submit "送信" %>
+           <% end %>
+         <% end %>
+        </div>
      </div>
+
+   </div>
+ </div>

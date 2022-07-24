@@ -3,6 +3,7 @@
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
 
     <h2><strong>投稿編集</strong></h2>
+    <%= render 'layouts/error_messages', model: @menu %>
     <%= form_with model:@menu, url:public_menu_path do |f| %>
        <div class="form-group mt-5">
             <%= f.label :"画像" %>
