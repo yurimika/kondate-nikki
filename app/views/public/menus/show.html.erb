@@ -25,7 +25,7 @@
       </div>
 
       <!--タグ-->
-      <div>
+      <div class="text-success mt-4">
        <% @menu.tags.each do |tag| %>
          <%= tag.name %>
        <% end %>
@@ -110,8 +110,9 @@
         <div>
          <% if user_signed_in? %>
            <%= image_tag current_user.get_profile_image(50,50), class:"rounded-circle" %>
+           <%= current_user.name %>
            <%= form_with model: [@menu, @comment], url: public_menu_comments_path(@menu), local: false  do |f| %>
-          　　 <%= f.text_area :comment, rows: '5',placeholder: "コメントをここに" %>
+          　　 <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに" %>
              <%= f.submit "送信" %>
            <% end %>
          <% end %>

@@ -1,12 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class='col-md-12'>
+    <div class='col-md-12 mt-3'>
       <h1><strong>献立投稿フォーム</strong></h1>
  <div class="row mt-4">
    <%= render 'layouts/error_messages', model: @menu %>
   <div class="col-md-4">
-   <%= form_with model: @menu, url: public_menus_path do |f| %>
-
+     <%= form_with model: @menu, url: public_menus_path do |f| %>
         <h4>献立画像</h4>
           <%= f.file_field :image, accept: "image/*" %>
 

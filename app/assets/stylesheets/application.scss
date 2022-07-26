@@ -15,9 +15,41 @@
  *= require simple_calendar
  */
 
+body {
+    margin: -24px auto;
+}
+
 
 .color {
   background-color: #A9D159;
-	margin: 0;
+ 	margin: 0;
 }
 
+
+.second-header {
+    background-color: #ffa965;
+}
+
+.top-image {
+    background-image: url(top-image.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    text-align: center;
+}
+
+.top-text {
+    margin-top: 120px;
+    color: white;
+    display: inline-block;
+    background: green;
+}
+
+.top-logo {
+    color: white;
+    margin-bottom: none;
+}
+
+.ranking {
+    background:  #A9D159;
+}

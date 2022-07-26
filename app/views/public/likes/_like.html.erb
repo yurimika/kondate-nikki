@@ -11,9 +11,21 @@
         <% end %>
     <% end %>
  <% else %>
-    <% link_to new_user_session_path, class: "like-link" do %>
-      <i class="fa fa-heart like-btn"></i>
-      <%= menu.likes.length %>
+    <% if User.guest.liked_by?(menu.id) %>
+    
+      <%= link_to new_user_session_path, class: "like-link text-danger", method: :delete do %>
+       <i class="fa fa-heart unlike-btn"></i>
+       <%= menu.likes.length %>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, class: "like-link" do %>
+       <i class="fa fa-heart like-btn"></i>
+       <%= menu.likes.length %>
+      <% end %>
     <% end %>
+    <!--<%# link_to new_user_session_path, class: "like-link" do %>-->
+    <!--  <i class="fa fa-heart like-btn"></i>-->
+    <!--  <%#= menu.likes.length %>-->
+    <!--<%# end %>-->
  <% end %>
 

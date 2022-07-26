@@ -1,46 +1,65 @@
 <div class="container">
 
-<p>毎日の食卓にアイデアを</p>
-<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-<%= link_to "ログイン", new_user_session_path %>
-<%= link_to "新規登録", new_user_registration_path %>
+  <div class="top-image">
+    <p class="top-text">毎日の食卓にアイデアを</p>
+    <h3 class="top-logo">~こんだて日記~</h3>
+  </div>
 
 
-<p>週間ランキング</p>
-<div class="rank-container">
-  <% @ranks.each.with_index(1) do |menu, i| %>
-  <div class="rank-box">
-    <%= i %>位
-    <div>
-      <%= link_to public_user_path(menu.user) do %>
-           <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle" %>
-          <% end %>
+  <div class="row text-center mt-3">
+     <div class="col-md-4 ml-3 mr-5 mt-1"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-lg btn-secondary" %></div>
+     <div class="col-md-3 mt-1"><%= link_to "ログイン", new_user_session_path, class:"btn btn-lg btn-success" %></div>
+     <div class="col-md-3 mt-1"><%= link_to "新規登録", new_user_registration_path, class:"btn btn-lg btn-info" %></div>
+  </div>
 
-          <%= menu.user.name %>
 
-          <div>
-           <!--管理者とそれ以外で飛べる詳細を分ける-->
-           <% if !admin_signed_in? %>
-             <%= link_to public_menu_path(menu) do %>
-              <%= image_tag menu.get_image, size: '320x240' %>
+  <div class="ranking ml-1 pb-4">
+   <h4 class="mt-5 mb-3"><i class="fa-regular fa-star text-warning"></i><strong class="text-success">週間ランキング</strong></h4>
+    <div class="row ml-2 rank-container">
+
+     <% @ranks.each.with_index(1) do |menu, i| %>
+      <div class="card mr-3">
+       <div class="rank-box p-3">
+        <div><i class="fa-regular fa-chess-queen text-warning"></i><%= i %>位</div>
+        <div>
+         <%= link_to public_user_path(menu.user) do %>
+              <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle mb-1" %>
              <% end %>
-           <% else %>
-             <%= link_to admin_menu_path(menu) do %>
-              <%= image_tag menu.get_image, size: '320x240' %>
-             <% end %>
-           <% end %>
-          </div>
-           <p>一言コメント：<%= menu.comment %></p>
 
+             <%= menu.user.name %>
+
+             <div>
+              <!--管理者とそれ以外で飛べる詳細を分ける-->
+              <% if !admin_signed_in? %>
+                <%= link_to public_menu_path(menu) do %>
+                 <%= image_tag menu.get_image, size: '320x240' %>
+                <% end %>
+              <% else %>
+                <%= link_to admin_menu_path(menu) do %>
+                 <%= image_tag menu.get_image, size: '320x240' %>
+                <% end %>
+              <% end %>
+             </div>
+              <p>一言コメント：<%= menu.comment %></p>
+
+         </div>
+       </div>
+      </div>
+     <% end %>
+
+    </div>
+  </div>
+
+
+   <div class="ml-1">
+    <h4 class="text-success mt-4 mb-3"><strong><i class="fa-regular fa-star text-warning"></i>新着</strong></h4>
+     <div class="row ml-2">
+       <%= render "public/menus/other_index", menus: @menus %>
      </div>
+    <%= link_to "<<もっと見る", public_new_arrival_path %>
    </div>
-  <% end %>
-</div>
 
 
- <p>新着</p>
-    <%= render "public/menus/other_index", menus: @menus %>
-    <%= link_to "もっと見る>>", public_new_arrival_path %>
 </div>
 
 
