@@ -17,8 +17,10 @@
 * いつも同じメニューの繰り返しで、何か新しいものを作りたいと思ったとき。
 * ほかの人の料理の組み合わせを参考にしたいとき。
 
-## 設計書
-<...>
+## 使い方
+* 管理者url /admins/sign_in
+* メールアドレス kondatenikki@gmail.com
+* パスワード　kondatenikkiadmin
 
 ## 開発環境
 - OS：Linux(CentOS)

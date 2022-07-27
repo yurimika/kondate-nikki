@@ -2,32 +2,32 @@
   <div class="row mt-4">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
 
-    <h2><strong><i class="fa-solid fa-user-pen"></i>会員情報編集</strong></h2>
-    <%= render 'layouts/error_messages', model: @user %>
-    <%= form_with model:@user, url:public_user_path do |f| %>
-     <dl class="card p-3 mt-4">
-       <div class="form-group ml-5">
-            <dt><%= f.label :"ニックネーム" %></dt>
-            <dd><%= f.text_field :name, class:"col-10" %></dd>
-       </div>
-       <div class="form-group ml-5">
-            <dt><%= f.label :"紹介文" %></dt>
-            <dd><%= f.text_field :introduction, class:"col-10" %></dd>
-       </div>
-        <div class="form-group ml-5">
-            <dt><%= f.label :"プロフィール画像" %></dt>
-            <dd><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></dd>
-       </div>
+        <h2><strong><i class="fa-solid fa-user-pen"></i>会員情報編集</strong></h2>
+        <%= render 'layouts/error_messages', model: @user %>
+        <%= form_with model:@user, url:public_user_path do |f| %>
+         <dl class="card p-3 mt-4">
+           <div class="form-group ml-5">
+                <dt><%= f.label :"ニックネーム" %></dt>
+                <dd><%= f.text_field :name, class:"col-10" %></dd>
+           </div>
+           <div class="form-group ml-5">
+                <dt><%= f.label :"紹介文" %></dt>
+                <dd><%= f.text_field :introduction, class:"col-10" %></dd>
+           </div>
+            <div class="form-group ml-5">
+                <dt><%= f.label :"プロフィール画像" %></dt>
+                <dd><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></dd>
+           </div>
 
 
-    <div class="row">
-      <div class="col-md-10 ml-5 mt-5">
-        <%= f.submit "編集内容を保存", class:"btn btn-outline-success btn-block" %>
-      </div>
-     <% end %>
-　  </div>
-
-   </dl>
+           <div class="row">
+             <div class="col-md-10 ml-5 mt-5">
+               <%= f.submit "編集内容を保存", class:"btn btn-outline-success btn-block" %>
+             </div>
+           </div>
+         </dl>
+        <% end %>
+        
+    </div>
   </div>
- </div>
 </div>

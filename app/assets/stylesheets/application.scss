@@ -31,15 +31,16 @@ body {
 }
 
 .top-image {
-    background-image: url(top-image.jpg);
+    background-image: image-url("top-image.jpg");
     background-position: center;
     background-size: cover;
     height: 300px;
     text-align: center;
+    opacity: 0.9;
 }
 
 .top-text {
-    margin-top: 120px;
+    margin-top: 90px;
     color: white;
     display: inline-block;
     background: green;
@@ -52,4 +53,14 @@ body {
 
 .ranking {
     background:  #A9D159;
+}
+
+.index_image {
+    max-width: 100%;
+    height: auto;
+}
+
+.post_img {
+    max-width: 100%;
+    height: auto;
 }

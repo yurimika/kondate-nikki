@@ -1,14 +1,12 @@
 <div class="container text-center mt-5 pb-5">
   <h1><strong><i class="fa-solid fa-gear"></i>管理システム</strong></h1>
-
   <div class="row pb-5">
-
-    <div class="col-md-6 mt-5 p-5 card">
+    <div class="col-md-6 mt-5 p-5 card mb-5">
       <h3><strong>ユーザー管理</strong></h3>
       <%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-info mt-5" %>
     </div>
 
-    <div class="col-md-6 mt-5 p-5 card">
+    <div class="col-md-6 mt-5 p-5 card mb-5">
       <h3><strong>投稿管理</strong></h3>
       <div class="search_form">
           <%= form_with url: public_search_path, local: true, method: :get do |f| %>
@@ -18,6 +16,5 @@
       </div>
       <%= link_to "投稿一覧", admin_menus_path, class:"btn btn-success mt-2" %>
     </div>
-
-  </div>
+ </div>
 </div>

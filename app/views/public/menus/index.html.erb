@@ -1,17 +1,17 @@
 <p class="text-success ml-5"><%= flash[:notice] %></p>
 <p class="text-danger ml-5"><%= flash[:alert] %></p>
 
-<h2 class="text-center mt-4"><strong><%= current_user.name %>の献立日記</strong></h2>
-<div class= 'calender'>
+<h2 class="text-center mt-4"><strong><i class="fa-regular fa-calendar-days"></i><%= current_user.name %>の献立日記</strong></h2>
+ <div class= 'calender mb-5'>
   <%= month_calendar events: @menus do |date, menus| %>
-  　<%= date.day %>
+　 <%= date.day %>
 
-  　 <% menus.each do |menu| %>
-      <div>
+　  <% menus.each do |menu| %>
+     <div class="row ml-1 mr-1">
        <%= link_to public_menu_path(menu.id) do %>
-         <%= image_tag menu.get_image, size: '80x60' %>
+          <%= image_tag menu.get_image, size: '80x60', class:"index_image" %>
        <% end %>
-      </div>
+     </div>
     <% end %>
   <% end %>
-</div>
+ </div>

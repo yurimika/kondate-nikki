@@ -4,52 +4,51 @@
       <div class="row">
        <div class="col-md-8 pr-2 pl-2 mx-auto">
 
-        <div class="head mt-5 mb-5">
-         <h2><strong><%= @user.name %>さんの登録情報</strong></h2>
-        </div>
-
-        <table class="table">
-          <thead>
-
-            <tr>
-              <th>会員ID</th>
-              <th><%= @user.id %></th>
-            </tr>
-
-            <tr>
-              <th>ニックネーム</th>
-              <th><%= @user.name %></th>
-            </tr>
-
-            <tr>
-              <th>メールアドレス</th>
-              <th><%= @user.email %></th>
-            </tr>
-
-            <tr>
-              <th>会員ステータス</th>
-                    <% if @user.is_deleted == true %>
-                      <th class="text-danger">利用停止中</th>
-                    <% else %>
-                      <th class="text-success">有効</th>
-                    <% end %>
-            </tr>
-          </thead>
-        </table>
-
-         <div class="row mt-4">
-           <div class="col-8">
+          <div class="head mt-5 mb-5">
+           <h2><strong><%= @user.name %>さんの登録情報</strong></h2>
+          </div>
+  
+          <table class="table">
+            <thead>
+              <tr>
+                <th>会員ID</th>
+                <th><%= @user.id %></th>
+              </tr>
+  
+              <tr>
+                <th>ニックネーム</th>
+                <th><%= @user.name %></th>
+              </tr>
+  
+              <tr>
+                <th>メールアドレス</th>
+                <th><%= @user.email %></th>
+              </tr>
+  
+              <tr>
+                <th>会員ステータス</th>
+                 <% if @user.is_deleted == true %>
+                   <th class="text-danger">利用停止中</th>
+                 <% else %>
+                   <th class="text-success">有効</th>
+                 <% end %>
+              </tr>
+            </thead>
+          </table>
+  
+          <div class="row mt-4">
+            <div class="col-8">
             　<%= link_to edit_admin_user_path, class:"btn btn-outline-success" do %>
-            　<i class="fa-solid fa-pen-to-square"></i>
+            　 <i class="fa-solid fa-pen-to-square"></i>
             　<% end %>
-           </div>
-
+            </div>
+  
            <div>
-               <%= link_to admin_users_path, class:"btn btn-outline-info" do %>
-                 <i class="fa-solid fa-arrow-left"></i>
-               <% end %>
+              <%= link_to admin_users_path, class:"btn btn-outline-info" do %>
+               <i class="fa-solid fa-arrow-left"></i>
+              <% end %>
            </div>
-         </div>
+          </div>
 
   　     </div>
       </div>

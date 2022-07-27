@@ -10,23 +10,24 @@
        </thead>
 
        <tbody>
-          <% users.each do |user| %>
-            <tr class="border">
-              <td><%= user.id %></td><br>
-              <td><%= link_to admin_user_path(user), class:"text-info" do %>
-                   <%= user.name %>
-                  <% end %>
-              </td><br>
-               <td><%= user.email %></td><br>
-
-               <!--利用停止にしているか-->
-                <% if user.is_deleted == true %>
-                        <td class="text-secondary">使用停止</td>
-                <% else %>
-                        <td class="text-success">有効</td>
+        <% users.each do |user| %>
+          <tr class="border">
+            <td><%= user.id %></td><br>
+            <td><%= link_to admin_user_path(user), class:"text-info" do %>
+                 <%= user.name %>
                 <% end %>
-            </tr>
-          <% end %>
-        </tbody>
+            </td><br>
+            <td><%= user.email %></td><br>
+
+           <!--利用停止にしているか-->
+            <% if user.is_deleted == true %>
+               <td class="text-secondary">使用停止</td>
+            <% else %>
+               <td class="text-success">有効</td>
+            <% end %>
+          </tr>
+        <% end %>
+       </tbody>
+      
    </table>
   </div>

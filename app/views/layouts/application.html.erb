@@ -14,100 +14,99 @@
 
 
   <body>
-    <header class="sticky-top">
-    <nav class="navbar navbar-expand-sm navbar-light color" >
+    <header>
+     <nav class="navbar navbar-expand-sm navbar-light color" >
       <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
 
-           <!--ロゴ-->
+       <!--ロゴ-->
        <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <div class="float-left header-logo mt-3">
             <%= link_to root_path do %>
-              <div class="logo" href="/"><%= image_tag('logo_2.png')%></div>
+              <div class="logo" href="/"><%= image_tag('logo_4.png')%></div>
             <% end %>
         </div>
 
 
        <!--ヘッダーナビ-->
-       <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-         <li>
-           <%= link_to "投稿する", new_public_menu_path, class: "btn btn-outline-dark mr-3" %>
-         </li>
-         <li>
-           <%= link_to "日記", public_menus_path, class: "btn btn-outline-dark mr-3" %>
-         </li>
-         <li>
-           <%= link_to "マイページ", public_user_path(current_user), class: "btn btn-outline-dark mr-3" %>
-         </li>
-         <li>
-           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark mr-3" %>
-         </li>
-        <% elsif admin_signed_in? %>
-         <li>
-          <%= link_to "管理者TOP", admin_path, class:"btn btn-outline-dark mr-3" %>
-         </li>
-         <li>
-          <%= link_to "投稿一覧", admin_menus_path, class:"btn btn-outline-dark mr-3" %>
-         </li>
-         <li>
-           <%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-outline-dark mr-3" %>
-         </li>
-         <li>
-           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark mr-3" %>
-         </li>
-        <% else %>
-
-         <li>
-           <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark mr-3" %>
-         </li>
-         <li>
-           <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark mr-3" %>
-         </li>
+        <ul class="navbar-nav ml-auto">
+         <% if user_signed_in? %>
+             <li>
+               <%= link_to "投稿する", new_public_menu_path, class: "btn btn-outline-dark mr-3" %>
+             </li>
+             <li>
+               <%= link_to "日記", public_menus_path, class: "btn btn-outline-dark mr-3" %>
+             </li>
+             <li>
+               <%= link_to "マイページ", public_user_path(current_user), class: "btn btn-outline-dark mr-3" %>
+             </li>
+             <li>
+               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark mr-3" %>
+             </li>
+       　 <% elsif admin_signed_in? %>
+             <li>
+              <%= link_to "管理者TOP", admin_path, class:"btn btn-outline-dark mr-3" %>
+             </li>
+             <li>
+              <%= link_to "投稿一覧", admin_menus_path, class:"btn btn-outline-dark mr-3" %>
+             </li>
+             <li>
+               <%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-outline-dark mr-3" %>
+             </li>
+             <li>
+               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark mr-3" %>
+             </li>
+       　 <% else %>
+             <li>
+               <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark mr-3" %>
+             </li>
+             <li>
+               <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark mr-3" %>
+             </li>
         <% end %>
         </ul>
+       </div>
       </div>
-      </div>
-    </nav>
-
-<!--管理者側では表示しない-->
-
-<div class="second-header pt-1 pb-2">
-<% if !admin_signed_in? %>
+     </nav>
+    </header>
+    
+    <!--管理者側では表示しない-->
+    <div class="second-header pt-1 pb-2">
+     <% if !admin_signed_in? %>
         <div class="container mt-3">
           <div class="row">
-          <!--タグ-->
-          <div class="col-md-8">
-
-          <%= form_tag  public_search_path, method: :get, class: 'boards__searchForm text-center' do %>
-              <%= select_tag :tag_id,
-                             options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                             {
-                               prompt: 'タグで絞り込み検索',
-                               onchange: 'submit(this.form);'
-                             }
-              %>
-            <% end %>
-          </div>
-
-          <div class="col-md-4">
-              <!--検索-->
-              <div class="search_form text-right mr-5">
-                <%= form_with url: public_search_path, local: true, method: :get do |f| %>
-                  <%= f.text_field :word, placeholder: "メニュー名、食材" %>
-                  <%= f.submit "検索", class: "btn btn-sm btn-primary mb-1" %>
-                <% end %>
+              <!--タグ-->
+              <div class="col-md-8">
+                  <%= form_tag  public_search_path, method: :get, class: 'boards__searchForm text-center' do %>
+                      <%= select_tag :tag_id,
+                                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                                     {
+                                       prompt: 'タグで絞り込み検索',
+                                       onchange: 'submit(this.form);'
+                                     }
+                      %>
+                　<% end %>
               </div>
+            
+              <div class="col-md-4">
+                  <!--フォーム検索-->
+                  <div class="search_form text-right mr-5">
+                    <%= form_with url: public_search_path, local: true, method: :get do |f| %>
+                      <%= f.text_field :word, placeholder: "メニュー名、食材" %>
+                      <%= f.submit "検索", class: "btn btn-sm btn-primary mb-1" %>
+                    <% end %>
+                  </div>
+              </div>
+              
           </div>
-         </div>
-       </div>
- <% end %>
-</div>
+        </div>
+     <% end %>
+    </div>
 
    <main>
-    <%= yield %>
+     <%= yield %>
    </main>
 
    <footer class="color text-light pt-3 pb-1">

@@ -1,8 +1,8 @@
 <div class="container pb-5">
-
+  
   <div class="top-image">
     <p class="top-text">毎日の食卓にアイデアを</p>
-    <h3 class="top-logo">~こんだて日記~</h3>
+    <h3 class="top-logo"><%= image_tag('logo_4_2.png')%></h3>
   </div>
 
 　<p class="text-success"><%= flash[:notice] %></p>
@@ -21,52 +21,46 @@
   <div class="ranking ml-1 pb-4 pt-1 mt-4">
    <h4 class="mt-5 mb-3"><i class="fa-regular fa-star text-warning"></i><strong class="text-success">週間ランキング</strong></h4>
     <div class="row ml-2 rank-container">
-
      <% @ranks.each.with_index(1) do |menu, i| %>
       <div class="card mr-3">
        <div class="rank-box p-3">
         <div><i class="fa-regular fa-chess-queen text-warning"></i><%= i %>位</div>
         <div>
-         <%= link_to public_user_path(menu.user) do %>
-              <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle mb-1" %>
+          <%= link_to public_user_path(menu.user) do %>
+               <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle mb-1" %>
+          <% end %>
+          <%= menu.user.name %>
+          <div>
+           <!--管理者とそれ以外で詳細ページを分ける-->
+           <% if !admin_signed_in? %>
+             <%= link_to public_menu_path(menu) do %>
+              <%= image_tag menu.get_image, size: '320x240' %>
              <% end %>
-
-             <%= menu.user.name %>
-
-             <div>
-              <!--管理者とそれ以外で飛べる詳細を分ける-->
-              <% if !admin_signed_in? %>
-                <%= link_to public_menu_path(menu) do %>
-                 <%= image_tag menu.get_image, size: '320x240' %>
-                <% end %>
-              <% else %>
-                <%= link_to admin_menu_path(menu) do %>
-                 <%= image_tag menu.get_image, size: '320x240' %>
-                <% end %>
-              <% end %>
-             </div>
-              <p>一言コメント：<%= menu.comment %></p>
-
+           <% else %>
+             <%= link_to admin_menu_path(menu) do %>
+              <%= image_tag menu.get_image, size: '320x240' %>
+             <% end %>
+           <% end %>
+          </div>
+          <p>一言コメント：<%= menu.comment %></p>
          </div>
        </div>
       </div>
      <% end %>
-
     </div>
   </div>
 
 
-   <div class="ml-1">
-    <h4 class="text-success mt-4 mb-2"><strong><i class="fa-regular fa-star text-warning"></i>新着</strong></h4>
-     <div class="row ml-2">
-       <%= render "public/menus/other_index", menus: @menus %>
-     </div>
+  <div class="ml-1">
+   <h4 class="text-success mt-4 mb-2"><strong><i class="fa-regular fa-star text-warning"></i>新着</strong></h4>
+    <div class="row ml-2">
+      <%= render "public/menus/other_index", menus: @menus %>
+    </div>
 
     <%= link_to public_new_arrival_path, class:"text-right text-info" do %>
-     <h5>新着一覧<i class="fa-solid fa-angles-right"></i></h5>
+      <h5>新着一覧<i class="fa-solid fa-angles-right"></i></h5>
     <% end %>
-   </div>
-
+  </div>
 
 </div>
 

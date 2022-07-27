@@ -1,7 +1,8 @@
 <div class="container mb-5 mt-4">
+    
     <h2><strong><i class="fa-solid fa-pen-fancy"></i>投稿編集</strong></h2>
     <%= render 'layouts/error_messages', model: @menu %>
-
+    
     <%= form_with model:@menu, url:public_menu_path do |f| %>
       <dl class="row">
         <div class="col-md-4">
@@ -34,7 +35,7 @@
                 <dd><%= f.text_area :food_detail_2 %></dd>
            </div>
         </div>
-
+    
         <div class="col-md-4">
            <div class="form-group mt-5">
                 <dt><%= f.label :"主菜" %></dt>
@@ -61,7 +62,7 @@
                 <dd><%= f.text_area :food_detail_5 %></dd>
            </div>
         </div>
-
+    
         <div class="col-md-4">
            <div class="form-group mt-5">
                 <dt><%= f.label :"副菜2" %></dt>
@@ -89,14 +90,12 @@
            </div>
         </div>
       </dl>
-
-    <div class="row">
-      <div class="col-md-12 mt-5">
-        <%= f.submit "編集内容を保存", class:"btn btn-outline-success btn-block" %>
+    
+    　<div class="row">
+        <div class="col-md-12 mt-5">
+          <%= f.submit "編集内容を保存", class:"btn btn-outline-success btn-block" %>
+        </div>
       </div>
-     <% end %>
-　  </div>
-
-
-
+    <% end %>
+        　  
 </div>

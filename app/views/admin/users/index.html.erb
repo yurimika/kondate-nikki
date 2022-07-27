@@ -1,12 +1,14 @@
 <div class='container pb-5 mt-3'>
+  
   <h2>ユーザー一覧</h2>
+  <!--ユーザー検索-->
   <div class="search_form">
     <%= form_with url: admin_user_search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word %>
       <%= f.submit "検索", class: "btn btn-primary" %>
     <% end %>
   </div>
-
+  <!--ユーザー一覧-->
   <%= render "admin/users/user_index", users: @users %>
 
 </div>

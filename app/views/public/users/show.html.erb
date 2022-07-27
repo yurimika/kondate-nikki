@@ -3,59 +3,57 @@
     <div class='col-md-12'>
       <div class="row">
        <div class="col-md-8 mx-auto mt-4">
-        <p class="text-success"><%= flash[:notice] %></p>
-        <h1><strong><i class="fa-regular fa-chess-queen"></i>マイページ</strong></h1><br>
+         <p class="text-success"><%= flash[:notice] %></p>
+         <h1><strong><i class="fa-regular fa-chess-queen"></i>マイページ</strong></h1><br>
 
-          <div class="row mb-3">
-           <h3 class="col-8">登録情報</h3>
-           <div class="col-4">
-             <% if (@user == current_user) && (@user.name != "guestuser") %>
-            　 <%= link_to edit_public_user_path(@user), class:"btn btn-outline-success" do %>
-            　 <i class="fa-solid fa-pen-to-square"></i>
-            　 <% end %>
-          　 <% end %>
+         <div class="row mb-3">
+          <h3 class="col-8">登録情報</h3>
+          <div class="col-4">
+            <% if (@user == current_user) && (@user.name != "guestuser") %>
+             <%= link_to edit_public_user_path(@user), class:"btn btn-outline-success" do %>
+               <i class="fa-solid fa-pen-to-square"></i>
+             <% end %>
+          　<% end %>
            </div>
-          </div>
+         </div>
 
-
-       <div class="ml-2 mb-2">
-          <%= image_tag @user.get_profile_image(100,100),class: "rounded-circle" %>
-        </div>
-    <table class="table">
-      <thead>
-
-        <tr>
-          <th>ニックネーム</th>
-          <th><%= @user.name %></th>
-        </tr>
-
-        <tr>
-          <th>紹介文</th>
-          <th><%= @user.introduction %></th>
-        </tr>
-
-      <% if (@user == current_user) && (@user.name != "guestuser") %>
-        <tr>
-          <th>メールアドレス</th>
-          <th><%= @user.email %></th>
-        </tr>
-      <% end %>
-
-      </thead>
-    </table>
-     <% if @user == current_user %>
-      <%= link_to "献立を投稿する", new_public_menu_path, class:"btn btn-success ml-2" %>
-      <%= link_to "いいねした投稿", likes_public_user_path(@user), class:"btn btn-outline-danger ml-5" %>
-     <% else %>
-      <!--自分以外のユーザーの場合-->
-        <h5><%= @user.name %>の最近の投稿</h5>
-        <div class="row ml-1">
-         <%= render "public/menus/other_index", menus: @menus %>
-        </div>
-     <% end %>
-     </div>
-     </div>
-
+         <div class="ml-2 mb-2">
+           <%= image_tag @user.get_profile_image(100,100),class: "rounded-circle" %>
+         </div>
+         
+         <table class="table">
+          <thead>
+            <tr>
+              <th>ニックネーム</th>
+              <th><%= @user.name %></th>
+            </tr>
+    
+            <tr>
+              <th>紹介文</th>
+              <th><%= @user.introduction %></th>
+            </tr>
+    
+          <% if (@user == current_user) && (@user.name != "guestuser") %>
+            <tr>
+              <th>メールアドレス</th>
+              <th><%= @user.email %></th>
+            </tr>
+          <% end %>
+    
+          </thead>
+         </table>
+         
+         <% if @user == current_user %><!--current_userのみ-->
+           <%= link_to "献立を投稿する", new_public_menu_path, class:"btn btn-success ml-2" %>
+           <%= link_to "いいねした投稿", likes_public_user_path(@user), class:"btn btn-outline-danger ml-5" %>
+         <% else %><!--自分以外のユーザーの場合-->
+           <h5><%= @user.name %>の最近の投稿</h5>
+            <div class="row ml-1">
+             <%= render "public/menus/other_index", menus: @menus %>
+            </div>
+         <% end %>
+       </div>
+      </div>
     </div>
   </div>
 </div>
