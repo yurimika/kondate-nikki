@@ -1,23 +1,23 @@
-<div class="container">
+<div class="container pb-5">
   <div class="row">
-  <div class="col-md-8">
- <p class="text-success"><%= flash[:notice] %></p>
-    <h2>投稿詳細</h2>
-  </div>
+   <div class="col-md-8">
+    <p class="text-success"><%= flash[:notice] %></p>
+     <h2>投稿詳細</h2>
+   </div>
 
-  <div class="col-md-4">
+   <div class="col-md-4 mt-3">
      <% if @menu.user == current_user %>
-       <%= link_to "編集",  edit_public_menu_path(@menu) %>
-       <%= link_to "削除",  public_menu_path(@menu), method: :delete %>
+       <%= link_to "編集",  edit_public_menu_path(@menu), class:"btn btn-sm btn-success" %>
+       <%= link_to "削除",  public_menu_path(@menu), method: :delete, class:"btn btn-sm btn-danger" %>
      <% end %>
+   </div>
   </div>
-  </div>
 
 
- <div class="row">
-  <div class="col-md-6">
 
-      <%= image_tag @menu.get_image, size: '480x360' %>
+  <div class="row">
+   <div class="col-md-6">
+      <%= image_tag @menu.get_image, size: '432x324' %>
 
       <!--いいね-->
       <div id = "like_<%= @menu.id %>">
@@ -30,9 +30,9 @@
          <%= tag.name %>
        <% end %>
       </div>
-  </div>
+   </div>
 
-  <div class="col-md-6">
+    <div class="col-md-6">
      <p>一言コメント：<%= @menu.comment %></p>
 
      <!--カラムに値が入っていれば表示-->
@@ -96,12 +96,14 @@
 
 
    <!--コメント機能-->
+         <div class="border-top">
+          <h6 class="mt-3"><i class="fa-regular fa-comments"></i>コメント</h6>
           <table>
             <tbody id="comment-index" >
              <%= render "public/comments/comment", menu: @menu %>
             </tbody>
           </table>
-
+         </div>
    　　<!--コメント、エラーメッセージ-->
           <div id="comments-error">
               <%= render 'layouts/error_messages', model: @comment %>
@@ -112,8 +114,8 @@
            <%= image_tag current_user.get_profile_image(50,50), class:"rounded-circle" %>
            <%= current_user.name %>
            <%= form_with model: [@menu, @comment], url: public_menu_comments_path(@menu), local: false  do |f| %>
-          　　 <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに" %>
-             <%= f.submit "送信" %>
+          　　 <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに"%>
+          　　 <%= f.submit "送信" %>
            <% end %>
          <% end %>
         </div>

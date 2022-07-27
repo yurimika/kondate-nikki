@@ -1,19 +1,24 @@
-<div class="container">
+<div class="container pb-5">
 
   <div class="top-image">
     <p class="top-text">毎日の食卓にアイデアを</p>
     <h3 class="top-logo">~こんだて日記~</h3>
   </div>
 
-
-  <div class="row text-center mt-3">
-     <div class="col-md-4 ml-3 mr-5 mt-1"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-lg btn-secondary" %></div>
-     <div class="col-md-3 mt-1"><%= link_to "ログイン", new_user_session_path, class:"btn btn-lg btn-success" %></div>
-     <div class="col-md-3 mt-1"><%= link_to "新規登録", new_user_registration_path, class:"btn btn-lg btn-info" %></div>
+　<p class="text-success"><%= flash[:notice] %></p>
+　<div class="row text-center">
+ 　<% if !user_signed_in? %>
+       <div class="col-md-4 ml-3 mr-5 mt-1"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-lg btn-secondary" %></div>
+       <div class="col-md-3 mt-1"><%= link_to "ログイン", new_user_session_path, class:"btn btn-lg btn-success" %></div>
+       <div class="col-md-3 mt-1"><%= link_to "新規登録", new_user_registration_path, class:"btn btn-lg btn-info" %></div>
+   <% else %>
+       <div class="col-md-3 ml-5 mr-5 mt-1"><%= link_to '投稿する', new_public_menu_path, class:"btn btn-lg btn-outline-primary"%></div>
+       <div class="col-md-3 mt-1 ml-3"><%= link_to "日記",  public_menus_path(current_user), class:"btn btn-lg btn-outline-success" %></div>
+       <div class="col-md-4 mt-1 ml-3"><%= link_to "マイページ", public_user_path(current_user), class:"btn btn-lg btn-outline-info" %></div>
+   <% end %>
   </div>
 
-
-  <div class="ranking ml-1 pb-4">
+  <div class="ranking ml-1 pb-4 pt-1 mt-4">
    <h4 class="mt-5 mb-3"><i class="fa-regular fa-star text-warning"></i><strong class="text-success">週間ランキング</strong></h4>
     <div class="row ml-2 rank-container">
 
@@ -52,11 +57,14 @@
 
 
    <div class="ml-1">
-    <h4 class="text-success mt-4 mb-3"><strong><i class="fa-regular fa-star text-warning"></i>新着</strong></h4>
+    <h4 class="text-success mt-4 mb-2"><strong><i class="fa-regular fa-star text-warning"></i>新着</strong></h4>
      <div class="row ml-2">
        <%= render "public/menus/other_index", menus: @menus %>
      </div>
-    <%= link_to "<<もっと見る", public_new_arrival_path %>
+
+    <%= link_to public_new_arrival_path, class:"text-right text-info" do %>
+     <h5>新着一覧<i class="fa-solid fa-angles-right"></i></h5>
+    <% end %>
    </div>
 
 

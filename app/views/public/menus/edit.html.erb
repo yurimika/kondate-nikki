@@ -1,94 +1,102 @@
-<div class="container">
-  <div class="row mt-4">
-    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-
-    <h2><strong>投稿編集</strong></h2>
+<div class="container mb-5 mt-4">
+    <h2><strong><i class="fa-solid fa-pen-fancy"></i>投稿編集</strong></h2>
     <%= render 'layouts/error_messages', model: @menu %>
+
     <%= form_with model:@menu, url:public_menu_path do |f| %>
-       <div class="form-group mt-5">
-            <%= f.label :"画像" %>
-            <%= f.file_field :image, placeholder: "画像", accept: "image/*" %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"一言コメント" %>
-            <%= f.text_area :comment %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"日付" %>
-            <%= f.datetime_select :start_time %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"主食" %>
-            <%= f.text_field :menu_name_1 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"使用した食材(主食)" %>
-            <%= f.text_area :food_detail_1 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"汁物" %>
-            <%= f.text_field :menu_name_2 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"使用した食材(汁物)" %>
-            <%= f.text_area :food_detail_2 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"主菜" %>
-            <%= f.text_field :menu_name_3 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"使用した食材(主菜)" %>
-            <%= f.text_area :food_detail_3 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"主菜2" %>
-            <%= f.text_field :menu_name_4 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"使用した食材(主菜2)" %>
-            <%= f.text_area :food_detail_4 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"副菜" %>
-            <%= f.text_field :menu_name_5 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"使用した食材(副菜)" %>
-            <%= f.text_area :food_detail_5 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"副菜2" %>
-            <%= f.text_field :menu_name_6 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"使用した食材(副菜2)" %>
-            <%= f.text_area :food_detail_6 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"副菜3" %>
-            <%= f.text_field :menu_name_7 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"使用した食材(副菜3)" %>
-            <%= f.text_area :food_detail_7 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"その他" %>
-            <%= f.text_field :menu_name_8 %>
-       </div>
-       <div class="form-group mt-5">
-            <%= f.label :"使用した食材(その他)" %>
-            <%= f.text_area :food_detail_8 %>
-       </div>
+      <dl class="row">
+        <div class="col-md-4">
+           <div class="form-group mt-5">
+                <dt><%= f.label :"画像" %></dt>
+                <dd><%= f.file_field :image, placeholder: "画像", accept: "image/*" %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"一言コメント(必須)" %></dt>
+                <dd><%= f.text_area :comment %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"日付" %></dt>
+                <dd><%= f.datetime_select :start_time %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"主食" %></dt>
+                <dd><%= f.text_field :menu_name_1 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"使用した食材(主食)" %></dt>
+                <dd><%= f.text_area :food_detail_1 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"汁物" %></dt>
+                <dd><%= f.text_field :menu_name_2 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"使用した食材(汁物)" %></dt>
+                <dd><%= f.text_area :food_detail_2 %></dd>
+           </div>
+        </div>
+
+        <div class="col-md-4">
+           <div class="form-group mt-5">
+                <dt><%= f.label :"主菜" %></dt>
+                <dd><%= f.text_field :menu_name_3 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"使用した食材(主菜)" %></dt>
+                <dd><%= f.text_area :food_detail_3 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"主菜2" %></dt>
+                <dd><%= f.text_field :menu_name_4 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"使用した食材(主菜2)" %></dt>
+                <dd><%= f.text_area :food_detail_4 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"副菜" %></dt>
+                <dd><%= f.text_field :menu_name_5 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"使用した食材(副菜)" %></dt>
+                <dd><%= f.text_area :food_detail_5 %></dd>
+           </div>
+        </div>
+
+        <div class="col-md-4">
+           <div class="form-group mt-5">
+                <dt><%= f.label :"副菜2" %></dt>
+                <dd><%= f.text_field :menu_name_6 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"使用した食材(副菜2)" %></dt>
+                <dd><%= f.text_area :food_detail_6 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"副菜3" %></dt>
+                <dd><%= f.text_field :menu_name_7 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"使用した食材(副菜3)" %></dt>
+                <dd><%= f.text_area :food_detail_7 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"その他" %></dt>
+                <dd><%= f.text_field :menu_name_8 %></dd>
+           </div>
+           <div class="form-group mt-5">
+                <dt><%= f.label :"使用した食材(その他)" %></dt>
+                <dd><%= f.text_area :food_detail_8 %></dd>
+           </div>
+        </div>
+      </dl>
 
     <div class="row">
-      <div class="col-md-8 mt-5">
-        <%= f.submit "編集内容を保存", class:"btn btn-outline-success" %>
+      <div class="col-md-12 mt-5">
+        <%= f.submit "編集内容を保存", class:"btn btn-outline-success btn-block" %>
       </div>
      <% end %>
 　  </div>
 
-  </div>
- </div>
+
+
 </div>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pb-5">
   <div class="row">
     <div class='col-md-12'>
       <div class="row">
@@ -43,14 +43,16 @@
 
       </thead>
     </table>
- <% if @user == current_user %>
-  <%= link_to "献立を投稿する", new_public_menu_path, class:"btn btn-success ml-2" %>
-  <%= link_to "いいねした投稿", likes_public_user_path(@user), class:"btn btn-outline-danger ml-5" %>
- <% else %>
-  <!--自分以外のユーザーの場合-->
-    <h5><%= @user.name %>の最近の投稿</h5>
-    <%= render "public/menus/other_index", menus: @menus %>
- <% end %>
+     <% if @user == current_user %>
+      <%= link_to "献立を投稿する", new_public_menu_path, class:"btn btn-success ml-2" %>
+      <%= link_to "いいねした投稿", likes_public_user_path(@user), class:"btn btn-outline-danger ml-5" %>
+     <% else %>
+      <!--自分以外のユーザーの場合-->
+        <h5><%= @user.name %>の最近の投稿</h5>
+        <div class="row ml-1">
+         <%= render "public/menus/other_index", menus: @menus %>
+        </div>
+     <% end %>
      </div>
      </div>
 

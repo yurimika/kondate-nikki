@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @menus = @user.menus.limit(3)
+    @menus = @user.menus.limit(4)
   end
 
   def edit
