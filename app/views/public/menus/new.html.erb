@@ -9,13 +9,13 @@
           <div class="col-md-4">
             <h4>献立画像</h4>
             <%= f.file_field :image, accept: "image/*" %>
-            
+
     　　　   　<!--コメント-->
-            <h4 class="mt-3">一言コメント</h4>
-              <%= f.text_area :comment, placeholder: "コメントを入力してください(必須)"  %>
+            <h4 class="mt-3">一言コメント<br>(13文字以内、必須)</h4>
+              <%= f.text_area :comment, placeholder: "13文字以内のコメントを入力してください(必須)"  %>
             <h4 class="mt-3">日付</h4>
               <%= f.datetime_select :start_time %>
-    
+
             <!--タグ-->
             <div class="check_box mt-5">
               <span>タグ</span>
@@ -29,7 +29,7 @@
              <% end %>
             </div>
           </div>
-      
+
           <div class="col-md-4">
             <h4>主食</h4>
               <%= f.text_field :menu_name_1, placeholder: "例：炊き込みご飯"  %>
@@ -68,7 +68,7 @@
           </div>
           <%= f.submit '投稿', class:"btn btn-success btn-block mb-5 mt-3 " %>
         </div>
-      
+
       <% end %>
     </div>
   </div>
