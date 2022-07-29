@@ -71,14 +71,14 @@
       </div>
      </nav>
     </header>
-    
+
     <!--管理者側では表示しない-->
     <div class="second-header pt-1 pb-2">
      <% if !admin_signed_in? %>
         <div class="container mt-3">
           <div class="row">
               <!--タグ-->
-              <div class="col-md-8">
+              <div class="col-md-6">
                   <%= form_tag  public_search_path, method: :get, class: 'boards__searchForm text-center' do %>
                       <%= select_tag :tag_id,
                                      options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
@@ -89,8 +89,8 @@
                       %>
                 　<% end %>
               </div>
-            
-              <div class="col-md-4">
+
+              <div class="col-md-6">
                   <!--フォーム検索-->
                   <div class="search_form text-right mr-5">
                     <%= form_with url: public_search_path, local: true, method: :get do |f| %>
@@ -99,7 +99,7 @@
                     <% end %>
                   </div>
               </div>
-              
+
           </div>
         </div>
      <% end %>
