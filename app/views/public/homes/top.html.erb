@@ -18,16 +18,16 @@
    <% end %>
   </div>
 
-  <div class="ranking ml-1 pb-4 pt-1 mt-4">
+  <div class="ranking ml-1 pb-4 mt-4">
    <h4 class="mt-5 mb-3"><i class="fa-regular fa-star text-warning"></i><strong class="text-success">週間ランキング</strong></h4>
     <div class="row ml-2 rank-container">
      <% @ranks.each.with_index(1) do |menu, i| %>
       <div class="card mr-3">
        <div class="rank-box p-3">
-        <div><i class="fa-regular fa-chess-queen text-warning"></i><%= i %>位</div>
+        <div><strong><i class="fa-regular fa-chess-queen text-warning"></i><%= i %>位</strong></div>
         <div>
           <%= link_to public_user_path(menu.user) do %>
-               <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle mb-1" %>
+               <%= image_tag menu.user.get_profile_image(50,50),class: "profile_mini mb-1" %>
           <% end %>
           <%= menu.user.name %>
           <div>

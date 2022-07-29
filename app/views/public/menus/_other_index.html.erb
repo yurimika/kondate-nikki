@@ -2,7 +2,7 @@
   <div class="card mr-3 mt-3">
    <div class="p-3">
    　<%= link_to public_user_path(menu.user) do %>
-      <%= image_tag menu.user.get_profile_image(50,50),class: "rounded-circle mb-2" %>
+      <%= image_tag menu.user.get_profile_image(50,50),class: "profile_mini mb-2" %>
      <% end %>
      <%= menu.user.name %>
 
