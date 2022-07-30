@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :liked_menus, through: :likes, source: :menu
   has_many :comments, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true
 
 #ゲストログイン

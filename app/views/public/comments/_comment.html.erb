@@ -9,6 +9,9 @@
     <td>
      <div class="ml-4">
       <%= comment.comment %>
+       <% if comment.user == menu.user %>
+        <span class="text-success ml-1"><i class="fa-solid fa-user"></i>投稿主</span>
+       <% end %>
      </div>
     </td>
     <td>
