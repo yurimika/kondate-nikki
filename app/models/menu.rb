@@ -16,17 +16,15 @@ class Menu < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/noimage-photo.png')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
    end
-    image
+      image
   end
 
   #検索
-   def self.looks(word)
+  def self.looks(word)
       @menu = Menu.where("menu_name_1 LIKE? OR food_detail_1 like? OR menu_name_2 LIKE?
       OR food_detail_2 like? OR menu_name_3 LIKE? OR food_detail_3 like? OR menu_name_4 LIKE? OR food_detail_4 like?
       OR menu_name_5 LIKE? OR food_detail_5 like? OR menu_name_6 LIKE? OR food_detail_6 like? OR menu_name_7 LIKE? OR food_detail_7 like?
       OR menu_name_8 LIKE? OR food_detail_8 like?","%#{word}%", "%#{word}%","%#{word}%","%#{word}%","%#{word}%",
       "%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%")
-   end
-
-
+  end
 end

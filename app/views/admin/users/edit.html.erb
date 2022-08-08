@@ -2,7 +2,6 @@
   <div class="row pb-5">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
 
-
       <div class="head mt-4 mb-3">
          <h2><strong><%= @user.name %>さんの登録情報編集</strong></h2>
       </div>
@@ -30,17 +29,17 @@
                   <%= f.label :is_deleted, "有効",{value: :false, style: "display: inline-block;"} %>
              </div>
   
-          <div class"row">
+           <div class"row">
              <div class="col mt-4 text-right">
-                  <%= f.submit "編集内容を保存", class:"btn btn-success" %>
-                   <% end %>
+                 <%= f.submit "編集内容を保存", class:"btn btn-success" %>
+                 <% end %>
              </div>
              <div>
                  <%= link_to admin_users_path, class:"btn btn-outline-info" do %>
                    <i class="fa-solid fa-arrow-left"></i>
                  <% end %>
              </div>
-          </div>
+           </div>
          </div>
       </div>
       

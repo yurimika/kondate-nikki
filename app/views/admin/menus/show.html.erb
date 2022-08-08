@@ -8,69 +8,70 @@
       <%= link_to "投稿削除",  admin_menu_path(@menu), method: :delete, class:"btn btn-sm btn-outline-danger" %>
     </div>
   </div>
-
+  
+  <!--ここから投稿表示-->
   <div class="row">
     <div class="col-md-6">
-       <%= image_tag @menu.get_image, size: '432x324', class:"post_img" %>
-       <p><strong>一言コメント：<%= @menu.comment %></strong></p>
+      <%= image_tag @menu.get_image, size: '432x324', class:"post_img" %>
+      <p><strong>一言コメント：<%= @menu.comment %></strong></p>
     </div>
 
     <div class="col-md-6 pb-5">
        <!--カラムに値が入っていれば表示-->
        <% if  @menu.menu_name_1.present? %>
-        <p><strong>主食：<%= @menu.menu_name_1 %></strong></p>
+         <p><strong>主食：<%= @menu.menu_name_1 %></strong></p>
        <% end %>
        <% if  @menu.food_detail_1.present? %>
-        <P>使用した食材(主食)：<%= @menu.food_detail_1 %></p>
+         <p>使用した食材(主食)：<%= @menu.food_detail_1 %></p>
        <% end %>
 
        <% if  @menu.menu_name_2.present? %>
-        <p><strong>汁物：<%= @menu.menu_name_2 %></strong></p>
+         <p><strong>汁物：<%= @menu.menu_name_2 %></strong></p>
        <% end %>
        <% if  @menu.food_detail_2.present? %>
-        <P>使用した食材(汁物)：<%= @menu.food_detail_2 %></p>
+         <p>使用した食材(汁物)：<%= @menu.food_detail_2 %></p>
        <% end %>
 
        <% if  @menu.menu_name_3.present? %>
-        <p><strong>主菜：<%= @menu.menu_name_3 %></strong></p>
+         <p><strong>主菜：<%= @menu.menu_name_3 %></strong></p>
        <% end %>
        <% if  @menu.food_detail_3.present? %>
-        <P>使用した食材(主菜)：<%= @menu.food_detail_3 %></p>
+         <p>使用した食材(主菜)：<%= @menu.food_detail_3 %></p>
        <% end %>
 
        <% if  @menu.menu_name_4.present? %>
-        <p><strong>主菜2：<%= @menu.menu_name_4 %></strong></p>
+         <p><strong>主菜2：<%= @menu.menu_name_4 %></strong></p>
        <% end %>
        <% if  @menu.food_detail_4.present? %>
-        <P>使用した食材(主菜2)：<%= @menu.food_detail_4 %></p>
+         <p>使用した食材(主菜2)：<%= @menu.food_detail_4 %></p>
        <% end %>
 
        <% if  @menu.menu_name_5.present? %>
-        <p><strong>副菜：<%= @menu.menu_name_5 %></strong></p>
+         <p><strong>副菜：<%= @menu.menu_name_5 %></strong></p>
        <% end %>
        <% if  @menu.food_detail_5.present? %>
-        <P>使用した食材(副菜)：<%= @menu.food_detail_5 %></p>
+         <p>使用した食材(副菜)：<%= @menu.food_detail_5 %></p>
        <% end %>
 
        <% if  @menu.menu_name_6.present? %>
-        <p><strong>副菜2：<%= @menu.menu_name_6 %></strong></p>
+         <p><strong>副菜2：<%= @menu.menu_name_6 %></strong></p>
        <% end %>
        <% if  @menu.food_detail_6.present? %>
-        <P>使用した食材(副菜2)：<%= @menu.food_detail_6 %></p>
+         <p>使用した食材(副菜2)：<%= @menu.food_detail_6 %></p>
        <% end %>
 
        <% if  @menu.menu_name_7.present? %>
-        <p><strong>副菜3：<%= @menu.menu_name_7 %></strong></p>
+         <p><strong>副菜3：<%= @menu.menu_name_7 %></strong></p>
        <% end %>
        <% if  @menu.food_detail_7.present? %>
-        <P>使用した食材(副菜3)：<%= @menu.food_detail_7 %></p>
+         <p>使用した食材(副菜3)：<%= @menu.food_detail_7 %></p>
        <% end %>
 
        <% if  @menu.menu_name_8.present? %>
-        <p><strong>その他：<%= @menu.menu_name_8 %></strong></p>
+         <p><strong>その他：<%= @menu.menu_name_8 %></strong></p>
        <% end %>
        <% if  @menu.food_detail_8.present? %>
-        <P>使用した食材(その他)：<%= @menu.food_detail_8 %></p>
+         <p>使用した食材(その他)：<%= @menu.food_detail_8 %></p>
        <% end %>
 
        <p>作成日：<%= @menu.start_time.strftime('%Y/%m/%d') %></p>
@@ -81,9 +82,10 @@
          <h6 class="mt-3"><i class="fa-regular fa-comments"></i>コメント</h6>
           <table>
             <tbody id="comment-index" >
-             <%= render "public/comments/comment", menu: @menu %>
+              <%= render "public/comments/comment", menu: @menu %>
             </tbody>
           </table>
        </div>
+    </div>
   </div>
 </div>

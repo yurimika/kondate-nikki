@@ -1,29 +1,28 @@
 <div class="container pb-5">
+ 
   <div class="row">
-   <div class="col-md-8">
-     <p class="text-success"><%= flash[:notice] %></p>
-     <h2>投稿詳細</h2>
-   </div>
-
-   <div class="col-md-4 mt-3">
-     <% if @menu.user == current_user %>
-       <%= link_to "編集",  edit_public_menu_path(@menu), class:"btn btn-sm btn-success" %>
-       <%= link_to "削除",  public_menu_path(@menu), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-sm btn-danger" %>
-     <% end %>
-   </div>
+    <div class="col-md-8">
+      <p class="text-success"><%= flash[:notice] %></p>
+      <h2>投稿詳細</h2>
+    </div>
+ 
+    <div class="col-md-4 mt-3">
+      <% if @menu.user == current_user %>
+        <%= link_to "編集",  edit_public_menu_path(@menu), class:"btn btn-sm btn-success" %>
+        <%= link_to "削除",  public_menu_path(@menu), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-sm btn-danger" %>
+      <% end %>
+    </div>
   </div>
-
-
 
   <div class="row">
    <div class="col-md-6">
-    <div>
-     <%= link_to public_user_path(@menu.user) do %>
-      <%= image_tag @menu.user.get_profile_image(50,50), class:"profile_mini mb-1" %>
-     <% end %>
-     <%= @menu.user.name %>
-    </div>
-     <%= image_tag @menu.get_image, size: '432x324', class:"post_img" %>
+     <div>
+       <%= link_to public_user_path(@menu.user) do %>
+        <%= image_tag @menu.user.get_profile_image(50,50), class:"profile_mini mb-1" %>
+       <% end %>
+       <%= @menu.user.name %>
+     </div>
+       <%= image_tag @menu.get_image, size: '432x324', class:"post_img" %>
 
      <!--いいね-->
      <div id = "like_<%= @menu.id %>">
@@ -39,93 +38,92 @@
    </div>
 
    <div class="col-md-6">
-    <p class="mb-4"><strong><i class="fa-regular fa-face-smile"></i>一言コメント：<%= @menu.comment %></strong></p>
-
-    <!--カラムに値が入っていれば表示-->
-    <% if  @menu.menu_name_1.present? %>
-     <p><strong><i class="fa-solid fa-bowl-rice"></i>主食：<%= @menu.menu_name_1 %></strong></p>
-    <% end %>
-    <% if  @menu.food_detail_1.present? %>
-     <p class="border-bottom">使用した食材(主食)：<%= @menu.food_detail_1 %></p>
-    <% end %>
-
-    <% if  @menu.menu_name_2.present? %>
-     <p><strong><i class="fa-solid fa-mug-hot"></i>汁物：<%= @menu.menu_name_2 %></strong></p>
-    <% end %>
-    <% if  @menu.food_detail_2.present? %>
-     <p class="border-bottom">使用した食材(汁物)：<%= @menu.food_detail_2 %></p>
-    <% end %>
-
-    <% if  @menu.menu_name_3.present? %>
-     <p><strong>主菜：<%= @menu.menu_name_3 %></strong></p>
-    <% end %>
-    <% if  @menu.food_detail_3.present? %>
-     <p class="border-bottom">使用した食材(主菜)：<%= @menu.food_detail_3 %></p>
-    <% end %>
-
-    <% if  @menu.menu_name_4.present? %>
-     <p><strong>主菜2：<%= @menu.menu_name_4 %></strong></p>
-    <% end %>
-    <% if  @menu.food_detail_4.present? %>
-     <p class="border-bottom">使用した食材(主菜2)：<%= @menu.food_detail_4 %></p>
-    <% end %>
-
-    <% if  @menu.menu_name_5.present? %>
-     <p><strong>副菜：<%= @menu.menu_name_5 %></strong></p>
-    <% end %>
-    <% if  @menu.food_detail_5.present? %>
-     <p class="border-bottom">使用した食材(副菜)：<%= @menu.food_detail_5 %></p>
-    <% end %>
-
-    <% if  @menu.menu_name_6.present? %>
-     <p><strong>副菜2：<%= @menu.menu_name_6 %></strong></p>
-    <% end %>
-    <% if  @menu.food_detail_6.present? %>
-     <p class="border-bottom">使用した食材(副菜2)：<%= @menu.food_detail_6 %></p>
-    <% end %>
-
-    <% if  @menu.menu_name_7.present? %>
-     <p><strong>副菜3：<%= @menu.menu_name_7 %></strong></p>
-    <% end %>
-    <% if  @menu.food_detail_7.present? %>
-     <p class="border-bottom">使用した食材(副菜3)：<%= @menu.food_detail_7 %></p>
-    <% end %>
-
-    <% if  @menu.menu_name_8.present? %>
-     <p><strong>その他：<%= @menu.menu_name_8 %></strong></p>
-    <% end %>
-    <% if  @menu.food_detail_8.present? %>
-     <p class="border-bottom">使用した食材(その他)：<%= @menu.food_detail_8 %></p>
-    <% end %>
-
-    <p>作成日：<%= @menu.start_time.strftime('%Y/%m/%d') %></p>
-
-
-    <!--コメント機能-->
-    <div class="border-top">
-     <h6 class="mt-3"><i class="fa-regular fa-comments"></i>コメント</h6>
-     <table>
-       <tbody id="comment-index" >
-        <%= render "public/comments/comment", menu: @menu %>
-       </tbody>
-     </table>
-    </div>
-　　<!--コメント、エラーメッセージ-->
-    <div id="comments-error">
-        <%= render 'layouts/error_messages', model: @comment %>
-    </div>
-
-    <div>
-     <% if user_signed_in? %>
-       <%= image_tag current_user.get_profile_image(50,50), class:"profile_mini" %>
-       <%= current_user.name %>
-       <%= form_with model: [@menu, @comment], url: public_menu_comments_path(@menu), local: false  do |f| %>
-      　　 <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに"%>
-      　　 <%= f.submit "送信" %>
-       <% end %>
+     <p class="mb-4"><strong><i class="fa-regular fa-face-smile"></i>一言コメント：<%= @menu.comment %></strong></p>
+ 
+     <!--カラムに値が入っていれば表示-->
+     <% if  @menu.menu_name_1.present? %>
+       <p><strong><i class="fa-solid fa-bowl-rice"></i>主食：<%= @menu.menu_name_1 %></strong></p>
      <% end %>
-    </div>
+     <% if  @menu.food_detail_1.present? %>
+       <p class="border-bottom">使用した食材(主食)：<%= @menu.food_detail_1 %></p>
+     <% end %>
+ 
+     <% if  @menu.menu_name_2.present? %>
+       <p><strong><i class="fa-solid fa-mug-hot"></i>汁物：<%= @menu.menu_name_2 %></strong></p>
+     <% end %>
+     <% if  @menu.food_detail_2.present? %>
+       <p class="border-bottom">使用した食材(汁物)：<%= @menu.food_detail_2 %></p>
+     <% end %>
+ 
+     <% if  @menu.menu_name_3.present? %>
+       <p><strong>主菜：<%= @menu.menu_name_3 %></strong></p>
+     <% end %>
+     <% if  @menu.food_detail_3.present? %>
+       <p class="border-bottom">使用した食材(主菜)：<%= @menu.food_detail_3 %></p>
+     <% end %>
+ 
+     <% if  @menu.menu_name_4.present? %>
+       <p><strong>主菜2：<%= @menu.menu_name_4 %></strong></p>
+     <% end %>
+     <% if  @menu.food_detail_4.present? %>
+       <p class="border-bottom">使用した食材(主菜2)：<%= @menu.food_detail_4 %></p>
+     <% end %>
+ 
+     <% if  @menu.menu_name_5.present? %>
+       <p><strong>副菜：<%= @menu.menu_name_5 %></strong></p>
+     <% end %>
+     <% if  @menu.food_detail_5.present? %>
+       <p class="border-bottom">使用した食材(副菜)：<%= @menu.food_detail_5 %></p>
+     <% end %>
+ 
+     <% if  @menu.menu_name_6.present? %>
+       <p><strong>副菜2：<%= @menu.menu_name_6 %></strong></p>
+     <% end %>
+     <% if  @menu.food_detail_6.present? %>
+       <p class="border-bottom">使用した食材(副菜2)：<%= @menu.food_detail_6 %></p>
+     <% end %>
+ 
+     <% if  @menu.menu_name_7.present? %>
+       <p><strong>副菜3：<%= @menu.menu_name_7 %></strong></p>
+     <% end %>
+     <% if  @menu.food_detail_7.present? %>
+       <p class="border-bottom">使用した食材(副菜3)：<%= @menu.food_detail_7 %></p>
+     <% end %>
+ 
+     <% if  @menu.menu_name_8.present? %>
+       <p><strong>その他：<%= @menu.menu_name_8 %></strong></p>
+     <% end %>
+     <% if  @menu.food_detail_8.present? %>
+       <p class="border-bottom">使用した食材(その他)：<%= @menu.food_detail_8 %></p>
+     <% end %>
+ 
+     <p>作成日：<%= @menu.start_time.strftime('%Y/%m/%d') %></p>
+ 
+ 
+     <!--コメント機能-->
+     <div class="border-top">
+      <h6 class="mt-3"><i class="fa-regular fa-comments"></i>コメント</h6>
+      <table>
+        <tbody id="comment-index" >
+         <%= render "public/comments/comment", menu: @menu %>
+        </tbody>
+      </table>
+     </div>
+ 　　<!--コメント、エラーメッセージ-->
+     <div id="comments-error">
+       <%= render 'layouts/error_messages', model: @comment %>
+     </div>
+ 
+     <div>
+       <% if user_signed_in? %>
+         <%= image_tag current_user.get_profile_image(50,50), class:"profile_mini" %>
+         <%= current_user.name %>
+         <%= form_with model: [@menu, @comment], url: public_menu_comments_path(@menu), local: false  do |f| %>
+        　　 <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに"%>
+        　　 <%= f.submit "送信" %>
+         <% end %>
+       <% end %>
+     </div>
    </div>
-
   </div>
  </div>

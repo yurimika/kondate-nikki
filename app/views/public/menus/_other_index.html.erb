@@ -2,18 +2,18 @@
   <div class="card mr-3 mt-3">
    <div class="p-3">
    　<%= link_to public_user_path(menu.user) do %>
-      <%= image_tag menu.user.get_profile_image(50,50),class: "profile_mini mb-2" %>
+       <%= image_tag menu.user.get_profile_image(50,50),class: "profile_mini mb-2" %>
      <% end %>
      <%= menu.user.name %>
 
      <div>
       <% if !admin_signed_in? %>
         <%= link_to public_menu_path(menu) do %><!--ユーザーの投稿詳細へ-->
-         <%= image_tag menu.get_image, size: '320x240' %>
+          <%= image_tag menu.get_image, size: '320x240' %>
         <% end %>
       <% else %>
         <%= link_to admin_menu_path(menu) do %><!--Adminの投稿詳細へ-->
-         <%= image_tag menu.get_image, size: '320x240' %>
+          <%= image_tag menu.get_image, size: '320x240' %>
         <% end %>
       <% end %>
      </div>

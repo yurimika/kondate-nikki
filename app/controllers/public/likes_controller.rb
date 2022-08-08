@@ -4,7 +4,6 @@ class Public::LikesController < ApplicationController
 
   def create
     Like.create(user_id: current_user.id, menu_id: @menu.id)
-
   end
 
   def destroy

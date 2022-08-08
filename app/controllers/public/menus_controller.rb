@@ -8,8 +8,8 @@ class Public::MenusController < ApplicationController
     @menu = Menu.new(menu_params)
     @menu.user_id = current_user.id
     if @menu.save
-       flash[:notice] = "投稿しました。"
-       redirect_to  public_menus_path
+      flash[:notice] = "投稿しました。"
+      redirect_to  public_menus_path
     else
       render :new
     end
@@ -26,12 +26,12 @@ class Public::MenusController < ApplicationController
 
   def update
     @menu = Menu.find(params[:id])
-     if @menu.update(menu_params)
-       flash[:notice] = "更新しました。"
-       redirect_to public_menu_path
-     else
-       render :edit
-     end
+    if @menu.update(menu_params)
+      flash[:notice] = "更新しました。"
+      redirect_to public_menu_path
+    else
+      render :edit
+    end
   end
 
   def show

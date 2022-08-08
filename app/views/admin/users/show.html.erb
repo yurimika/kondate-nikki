@@ -5,7 +5,7 @@
        <div class="col-md-8 pr-2 pl-2 mx-auto">
 
           <div class="head mt-5 mb-5">
-           <h2><strong><%= @user.name %>さんの登録情報</strong></h2>
+            <h2><strong><%= @user.name %>さんの登録情報</strong></h2>
           </div>
   
           <table class="table">
@@ -38,16 +38,18 @@
   
           <div class="row mt-4">
             <div class="col-8">
+              <!--編集画面へ-->
             　<%= link_to edit_admin_user_path, class:"btn btn-outline-success" do %>
-            　 <i class="fa-solid fa-pen-to-square"></i>
+            　   <i class="fa-solid fa-pen-to-square"></i>
             　<% end %>
             </div>
   
-           <div>
+            <div>
+              <!--一覧画面へ-->
               <%= link_to admin_users_path, class:"btn btn-outline-info" do %>
-               <i class="fa-solid fa-arrow-left"></i>
+                <i class="fa-solid fa-arrow-left"></i>
               <% end %>
-           </div>
+            </div>
           </div>
 
   　     </div>

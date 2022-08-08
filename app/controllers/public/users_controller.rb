@@ -14,18 +14,17 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-     if @user.update(user_params)
-       redirect_to public_user_path
-     else
-       render :edit
-     end
+    if @user.update(user_params)
+      redirect_to public_user_path
+    else
+      render :edit
+    end
   end
 
   def likes
     likes = Like.where(user_id: @user.id).pluck(:menu_id)
     @like_menus = Menu.find(likes)
   end
-
 
   private
 
@@ -39,8 +38,8 @@ class Public::UsersController < ApplicationController
 
   def ensure_guest_user
     @user = User.find(params[:id])
-   if @user.name == "guestuser"
+    if @user.name == "guestuser"
       redirect_to public_user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
-   end
+    end
   end
 end

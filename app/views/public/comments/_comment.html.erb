@@ -1,25 +1,25 @@
  <% menu.comments.each do |comment| %>
-  <tr>
-    <td>
-       <%= link_to public_user_path(comment.user) do %>
-        <%= image_tag comment.user.get_profile_image(50,50), class: "profile_mini" %>
+   <tr>
+     <td>
+        <%= link_to public_user_path(comment.user) do %>
+          <%= image_tag comment.user.get_profile_image(50,50), class: "profile_mini" %>
+        <% end %>
+          <%= comment.user.name %>
+     </td>
+     <td>
+       <div class="ml-4">
+        <%= comment.comment %>
+          <% if comment.user == menu.user %><!--投稿主のコメントを区別-->
+            <span class="text-success ml-1"><i class="fa-solid fa-user"></i>投稿主</span>
+          <% end %>
+       </div>
+     </td>
+     <td>
+       <% if comment.user == current_user %>
+         <%= link_to "削除",  public_menu_comment_path(comment.menu, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger ml-4" %>
+       <% elsif admin_signed_in? %>
+         <%= link_to "コメント削除", admin_menu_comment_path(comment.menu, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger ml-4" %>
        <% end %>
-        <%= comment.user.name %>
-    </td>
-    <td>
-     <div class="ml-4">
-      <%= comment.comment %>
-       <% if comment.user == menu.user %>
-        <span class="text-success ml-1"><i class="fa-solid fa-user"></i>投稿主</span>
-       <% end %>
-     </div>
-    </td>
-    <td>
-      <% if comment.user == current_user %>
-       <%= link_to "削除",  public_menu_comment_path(comment.menu, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger ml-4" %>
-      <% elsif admin_signed_in? %>
-       <%= link_to "コメント削除", admin_menu_comment_path(comment.menu, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger ml-4" %>
-      <% end %>
-    </td>
-  </tr>
+     </td>
+   </tr>
  <% end %>

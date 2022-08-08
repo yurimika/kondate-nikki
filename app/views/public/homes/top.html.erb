@@ -6,18 +6,18 @@
 
 　<p class="text-success"><%= flash[:notice] %></p>
 　<div class="row text-center">
- 　<% if !user_signed_in? %>
-       <div class="col-md-4 ml-3 mr-5 mt-1"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-lg btn-secondary" %></div>
-       <div class="col-md-3 mt-1"><%= link_to "ログイン", new_user_session_path, class:"btn btn-lg btn-success" %></div>
-       <div class="col-md-3 mt-1"><%= link_to "新規登録", new_user_registration_path, class:"btn btn-lg btn-info" %></div>
-   <% else %>
-       <div class="col-md-3 ml-5 mr-5 mt-1"><%= link_to '投稿する', new_public_menu_path, class:"btn btn-lg btn-outline-primary"%></div>
-       <div class="col-md-3 mt-1 ml-3"><%= link_to "日記",  public_menus_path(current_user), class:"btn btn-lg btn-outline-success" %></div>
-       <div class="col-md-4 mt-1 ml-3"><%= link_to "マイページ", public_user_path(current_user), class:"btn btn-lg btn-outline-info" %></div>
-   <% end %>
+  　<% if !user_signed_in? %><!--ログイン前-->
+        <div class="col-md-4 ml-3 mr-5 mt-1"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-lg btn-secondary" %></div>
+        <div class="col-md-3 mt-1"><%= link_to "ログイン", new_user_session_path, class:"btn btn-lg btn-success" %></div>
+        <div class="col-md-3 mt-1"><%= link_to "新規登録", new_user_registration_path, class:"btn btn-lg btn-info" %></div>
+    <% else %><!--ログイン後-->
+        <div class="col-md-3 ml-5 mr-5 mt-1"><%= link_to '投稿する', new_public_menu_path, class:"btn btn-lg btn-outline-primary"%></div>
+        <div class="col-md-3 mt-1 ml-3"><%= link_to "日記",  public_menus_path(current_user), class:"btn btn-lg btn-outline-success" %></div>
+        <div class="col-md-4 mt-1 ml-3"><%= link_to "マイページ", public_user_path(current_user), class:"btn btn-lg btn-outline-info" %></div>
+    <% end %>
   </div>
 
-
+  <!--ランキング表示-->
   <div class="ranking pb-4 mt-4">
    <h4 class="mt-5 mb-3"><i class="fa-regular fa-star text-warning"></i><strong class="text-success">週間ランキング</strong></h4>
     <div class="row rank-container">
@@ -50,24 +50,24 @@
     </div>
   </div>
 
-
+  <!--新着表示-->
   <div>
-   <div class="row mt-4">
-
-    <div class="col-md-6">
-     <h4 class="text-success"><strong><i class="fa-regular fa-star text-warning"></i>新着</strong></h4>
+    <div class="row mt-4">
+ 
+      <div class="col-md-6">
+        <h4 class="text-success"><strong><i class="fa-regular fa-star text-warning"></i>新着</strong></h4>
+      </div>
+  
+      <div class="col-md-6">
+       <%= link_to public_new_arrival_path, class:"text-right text-info" do %>
+         <h5>新着一覧<i class="fa-solid fa-angles-right"></i></h5>
+       <% end %>
+      </div>
     </div>
-
-    <div class="col-md-6">
-     <%= link_to public_new_arrival_path, class:"text-right text-info" do %>
-      <h5>新着一覧<i class="fa-solid fa-angles-right"></i></h5>
-     <% end %>
+ 
+    <div class="row">
+      <%= render "public/menus/other_index", menus: @menus %>
     </div>
-   </div>
-
-   <div class="row">
-     <%= render "public/menus/other_index", menus: @menus %>
-   </div>
   </div>
 
 </div>

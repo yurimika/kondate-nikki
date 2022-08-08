@@ -2,16 +2,16 @@ Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
+  passwords:     'admins/passwords'
   }
 
   devise_for :users, controllers: {
   sessions:      'users/sessions',
   passwords:     'users/passwords',
   registrations: 'users/registrations'
-}
+  }
 
- devise_scope :user do
+  devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
@@ -31,13 +31,13 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     resources :users do
       member do
-       get :likes
+        get :likes
       end
     end
     get "new_arrival" => "menus#new_arrival"
     resources :menus do
-       resources :likes, only: [:create, :destroy]
-       resources :comments, only: [:create, :destroy]
+      resources :likes, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
   end
 

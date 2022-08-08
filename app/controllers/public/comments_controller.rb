@@ -1,9 +1,9 @@
 class Public::CommentsController < ApplicationController
   def create
-     @menu = Menu.find(params[:menu_id])
-     @comment = current_user.comments.new(comment_params)
-     @comment.menu_id = @menu.id
-     @comment.save
+    @menu = Menu.find(params[:menu_id])
+    @comment = current_user.comments.new(comment_params)
+    @comment.menu_id = @menu.id
+    @comment.save
     if @comment.save
       render :create #jsファイル
     else
@@ -16,7 +16,7 @@ class Public::CommentsController < ApplicationController
     @menu = Menu.find(params[:menu_id])
   end
 
-   private
+  private
 
   def comment_params
     params.require(:comment).permit(:comment)
